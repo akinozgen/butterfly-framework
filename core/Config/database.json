@@ -1,0 +1,12 @@
+{
+    "demo": {
+        "name": "bttrfly_demo",
+        "charset": "utf8",
+        "provides": "mysql",
+        "host": {
+            "name": "localhost",
+            "user": "root",
+            "password": "toor"
+        }
+    }
+}

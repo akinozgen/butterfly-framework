@@ -1,0 +1,6 @@
+{
+    "/": "home/welcome/main",
+    "/login": "members/user/login",
+    "/register": "members/user/register",
+    "/logout": "members/user/logout"
+}

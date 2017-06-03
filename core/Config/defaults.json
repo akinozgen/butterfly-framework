@@ -1,0 +1,7 @@
+{
+    "route": {
+        "bundle": "home",
+        "controller": "welcome",
+        "method": "main"
+    }
+}
