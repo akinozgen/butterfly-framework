@@ -6,7 +6,7 @@ $config = [
     )),
     'errors' => json_decode(file_get_contents(
         realpath(__DIR__ . '/errors.json')
-    )),
+    ), true),
     'defaults' => json_decode(file_get_contents(
         realpath(__DIR__ . '/defaults.json')
     )),

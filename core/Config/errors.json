@@ -1,9 +1,9 @@
 {
-  "001": "File %filename not found.",
-  "002": "Bundle %bundlename not found.",
-  "003": "Controller %controller not found.",
-  "004": "Method %method not found.",
-  "005": "Database %database configuration not found.",
-  "006": "Unable to connect database from configuration %database",
-  "007": "Database authorization error from configuration %database"
+  "001": "File \"%filename\" not found.",
+  "002": "Bundle \"%bundlename\" not found.",
+  "003": "Controller \"%controller\" not found.",
+  "004": "Method \"%method\" not found.",
+  "005": "Database \"%database\" configuration not found.",
+  "006": "Unable to connect database from configuration \"%database\"",
+  "007": "Database authorization error from configuration \"%database\""
 }

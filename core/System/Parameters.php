@@ -17,15 +17,14 @@ class Parameters
     /**
      * @var array $parameters
      */
-    private $parameters;
+    private $parameters = [];
     /**
      * Parameters constructor.
      * @param string $uri
      * @param array $config
      * @param Route $route
      */
-    public function __construct($uri, $config, $route)
-    {
+    public function __construct($uri, $config, $route) {
         $uri = str_replace($route->getRoutekey(), '', $uri);
         $uri = explode('/', ltrim($uri, '/'));
         $this->setParameters($uri);
@@ -42,8 +41,13 @@ class Parameters
             else $values[] = $value;
             $counter++;
         }
-        for ($i = 0; $i < count($keys); $i++) {
-            $this->parameters[$keys[$i]] = $values[$i];
+
+        if (strlen($pairs[0]) > 1) {
+            for ($i = 0; $i < count($keys); $i++) {
+                $this->parameters[$keys[$i]] = $values[$i];
+            }
+        } else {
+            $this->parameters = [];
         }
     }
 

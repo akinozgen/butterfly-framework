@@ -32,8 +32,7 @@ class Route
      * @param string $route
      * @param array $config
      */
-    function __construct($route, $config)
-    {
+    function __construct($route, $config) {
         $route = $this->route_name($route, $config);
         $split = explode( '/', $route['classpath'] );
         $this->route_key = $route['route'];
@@ -69,22 +68,34 @@ class Route
     /**
      * @return string
      */
-    public function getBundle() {
-        return $this->bundle;
+    public function getBundle($capitalize = false) {
+        if ($capitalize) {
+            return ucwords($this->bundle);
+        } else {
+            return $this->bundle;
+        }
     }
 
     /**
      * @return string
      */
-    public function getController() {
-        return $this->controller;
+    public function getController($capitalize = false) {
+        if ($capitalize) {
+            return ucwords($this->controller);
+        } else {
+            return $this->controller;
+        }
     }
 
     /**
      * @return string
      */
-    public function getMethod() {
-        return $this->method;
+    public function getMethod($capitalize = false) {
+        if ($capitalize) {
+            return ucwords($this->method);
+        } else {
+            return $this->method;
+        }
     }
 
     /**
