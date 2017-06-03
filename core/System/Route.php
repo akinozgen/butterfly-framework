@@ -63,6 +63,10 @@ class Route
                 }
             }
         }
+        return [
+            'route' => $config['defaults']->route->name,
+            'classpath' => $config['router'][$config['defaults']->route->name]
+        ];
     }
 
     /**

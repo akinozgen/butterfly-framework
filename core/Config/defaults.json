@@ -1,5 +1,6 @@
 {
     "route": {
+        "name": "/",
         "bundle": "home",
         "controller": "welcome",
         "method": "main"

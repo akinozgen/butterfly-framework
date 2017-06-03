@@ -16,10 +16,22 @@ use Butterfly\System\Route as Router;
  */
 class UrlParser
 {
-
+    /**
+     * @var mixed|string
+     */
     private $uri;
+    /**
+     * @var Route
+     */
     private $route;
+    /**
+     * @var Parameters
+     */
     private $parameters;
+    /**
+     * @var Request
+     */
+    private $request;
 
     /**
      * UrlParser constructor.
@@ -32,6 +44,7 @@ class UrlParser
 
         $this->route = new Router($this->uri, $config);
         $this->parameters = new Parameters($this->uri, $config, $this->route);
+        $this->request = new Request();
     }
 
     /**
@@ -46,5 +59,12 @@ class UrlParser
      */
     public function getParameters() {
         return $this->parameters;
+    }
+
+    /**
+     * @return Request
+     */
+    public function getRequest() {
+        return $this->request;
     }
 }

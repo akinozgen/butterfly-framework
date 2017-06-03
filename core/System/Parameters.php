@@ -25,7 +25,10 @@ class Parameters
      * @param Route $route
      */
     public function __construct($uri, $config, $route) {
-        $uri = str_replace($route->getRoutekey(), '', $uri);
+        $uri = str_replace(
+            $route->getRoutekey() !== '/' ? $route->getRoutekey() : '',
+            '', $uri
+        );
         $uri = explode('/', ltrim($uri, '/'));
         $this->setParameters($uri);
     }

@@ -12,13 +12,14 @@
     require_once '../core/System/Route.php';
     require_once '../core/System/Parameters.php';
     require_once '../core/System/Root.php';
+    require_once '../core/System/Request.php';
 
     use \Butterfly\System\UrlParser as Url;
     use \Butterfly\System\Root as Root;
     use \Butterfly\System\Exception as ButterflyException;
 
     $url  = new Url($config);
-    $root = new Root($url);
+    $root = new Root($url, $url->getParameters(), $url->getRequest());
 
     try {
         $root->runCalledMethod($config);
