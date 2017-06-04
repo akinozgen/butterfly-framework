@@ -32,8 +32,13 @@ class Route
      * @param string $route
      * @param array $config
      */
-    function __construct($route, $config) {
-        $route = $this->route_name($route, $config);
+    function __construct($route_name, $config) {
+        $route = $this->route_name($route_name, $config);
+
+        if ($route['status'] == 'not_found') {
+            throw new Exception("017", [ 'route' => $route_name ]);
+        }
+
         $split = explode( '/', $route['classpath'] );
         $this->route_key = $route['route'];
 
@@ -51,12 +56,14 @@ class Route
             if ($route == '/') {
                 if ($route == $route_path)
                     return [
+                        'status' => 'found',
                         'route' => $route,
                         'classpath' => $classpath
                     ];
             } else {
                 if (preg_match_all("/".str_replace('/', '\/', $route)."/", $route_path)) {
                     return [
+                        'status' => 'found',
                         'route' => $route,
                         'classpath' => $classpath
                     ];
@@ -64,6 +71,7 @@ class Route
             }
         }
         return [
+            'status' => 'not_found',
             'route' => $config['defaults']->route->name,
             'classpath' => $config['router'][$config['defaults']->route->name]
         ];

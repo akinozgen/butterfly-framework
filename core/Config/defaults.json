@@ -11,5 +11,9 @@
         "files": [
             "Controllers/home.php"
         ]
+    },
+    "errors": {
+        "show_error_codes": true,
+        "show_error_texts": true
     }
 }

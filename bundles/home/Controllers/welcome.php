@@ -15,7 +15,8 @@ class Welcome
 {
 
     public function main(Parameters $parameters = null, Request $request = null) {
-        print_r($request);
+        echo "<style>body { font-family: 'sans-serif' }</style>";
+        echo "Welcome home:welcome:main";
     }
 
 }

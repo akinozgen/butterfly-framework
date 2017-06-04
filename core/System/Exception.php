@@ -36,9 +36,24 @@ class Exception extends \Exception implements Throwable
         parent::__construct($message, $code, $previous);
     }
 
-    public function getErrorCode()
+    /**
+     * @param string $prefix
+     * @param string $subfix
+     * @return string
+     */
+    public function getErrorMessage($prefix = '', $subfix = '')
     {
-        return $this->errorCode;
+        return $prefix.parent::getMessage().$subfix;
+    }
+
+    /**
+     * @param string $prefix
+     * @param string $subfix
+     * @return string
+     */
+    public function getErrorCode($prefix = '', $subfix = '')
+    {
+        return $prefix.$this->errorCode.$subfix;
     }
 
 }

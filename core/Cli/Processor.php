@@ -93,7 +93,7 @@ class Processor
                 $controller = $split[1];
                 $method = $split[2];
                 break;
-            default: throw new Exception('010', ['cmd' => 'create']); break;
+            default: throw new Exception('010', ['cmd' => 'remove']); break;
         }
     }
 
@@ -123,7 +123,7 @@ class Processor
                 $controller = $split[1];
                 $method = $split[2];
                 break;
-            default: throw new Exception('010', ['cmd' => 'create']); break;
+            default: throw new Exception('010', ['cmd' => 'remove']); break;
         }
     }
 

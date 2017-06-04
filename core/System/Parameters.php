@@ -47,7 +47,7 @@ class Parameters
 
         if (strlen($pairs[0]) > 1) {
             for ($i = 0; $i < count($keys); $i++) {
-                $this->parameters[$keys[$i]] = $values[$i];
+                @$this->parameters[$keys[$i]] = $values[$i];
             }
         } else {
             $this->parameters = [];
