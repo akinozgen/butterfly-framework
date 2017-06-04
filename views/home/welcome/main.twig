@@ -1,102 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: akinozgen
- * Date: 6/4/17
- * Time: 1:30 AM
- */
-
-namespace Butterfly\System\Cli;
-
-use Butterfly\System\Exception;
-
-/**
- * Class Bundle
- * @package Butterfly\System\Cli
- */
-class Bundle
-{
-    /**
-     * @var string
-     */
-    private $name;
-
-    function __construct($name) {
-        if ($name)
-            $this->name = $name;
-        else
-            throw new Exception("012");
-    }
-
-    /**
-     * @return string
-     */
-    public function getName() {
-        return $this->name;
-    }
-
-    /**
-     * @param string $value
-     */
-    public function setName($value) {
-        $this->name = $value;
-    }
-
-    public function createBundle($config) {
-        $dirs = $config['defaults']->bundle_structure->dirs;
-        $files = $config['defaults']->bundle_structure->files;
-
-        if ( ! file_exists(__DIR__ . '/../../bundles/' . $this->name) ) {
-            mkdir (__DIR__ . '/../../bundles/' . $this->name);
-            mkdir (__DIR__ . '/../../views/' . $this->name);
-        } else {
-            throw new Exception(
-                '011',
-                [
-                    'directory' => realpath(__DIR__ . '/../../bundles/' . $this->name)
-                ]
-            );
-        }
-
-        foreach ($dirs as $dir) {
-            mkdir (__DIR__ . '/../../bundles/'.$this->name.'/'.$dir);
-        }
-        foreach ($files as $file) {
-            touch (__DIR__ . '/../../bundles/'.$this->name.'/'.$file.'.php');
-            mkdir (__DIR__ . '/../../views/'.$this->name.'/'.pathinfo($file, PATHINFO_BASENAME));
-            touch (__DIR__ . '/../../views/'.$this->name.'/'.pathinfo($file, PATHINFO_BASENAME).'/main.twig');
-        }
-
-        $this->name = ucwords($this->name);
-        $now_year   = date('Y');
-        $name       = strtolower($this->name);
-        $write_file = file_put_contents(
-            __DIR__ . '/../../bundles/'.strtolower($this->name).'/Controllers/home.php',
-            <<<PHP
-<?php
-
-namespace Butterfly\\Bundles\\$this->name\\Controllers;
-
-use Butterfly\System\ActiveClass;
-use Butterfly\System\Parameters;
-use Butterfly\System\Request;
-
-class Home extends ActiveClass
-{
-
-    public function main(Parameters \$parameters = null, Request \$request = null) {
-        echo \$this->getTwig()->render('$name/home/main.twig', [
-            'title' => 'Main',
-            'message' => 'Greetings from home:$name:main...',
-        ]);
-    }
-
-}
-PHP
-        );
-        $write_file2 = file_put_contents(
-            __DIR__ . '/../../views/'.strtolower($this->name).'/home/main.twig',
-            <<<HTML
 <!doctype html>
 <html class="no-js" lang="">
 <head>
@@ -148,7 +49,7 @@ PHP
     <div class="jumbotron">
         <div class="container">
             <h1>Hello, world!</h1>
-            <p>{{ message }}</p>
+            <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
             <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
         </div>
     </div>
@@ -176,7 +77,7 @@ PHP
         <hr>
 
         <footer>
-            <p>&copy; $now_year Company, Inc.</p>
+            <p>&copy; 2016 Company, Inc.</p>
         </footer>
     </div> <!-- /container -->
 </div>
@@ -194,40 +95,3 @@ PHP
 </script>
 </body>
 </html>
-HTML
-        );
-        if ($write_file && $write_file2) {
-            echo "Success!";
-        } else {
-            if ( strlen($this->name) > 1 ){
-                exec("rm -R " . __DIR__ . '/../../bundles/' . strtolower($this->name));
-                //exec("rm -R " . __DIR__ . '/../../views/' . strtolower($this->name));
-            }
-            throw new Exception("013");
-        }
-    }
-
-    public function removeBundle() {
-        if ( strlen($this->name) > 1 && file_exists(__DIR__ . '/../../bundles/' . strtolower($this->name)) ) {
-            exec("rm -R " . __DIR__ . '/../../bundles/' . strtolower($this->name));
-            exec("rm -R " . __DIR__ . '/../../views/' . strtolower($this->name));
-            echo 'Success!';
-        }
-        else
-            throw new Exception("014");
-    }
-
-    public function checkBundle($config) {
-        if (file_exists(__DIR__ . '/../../bundles/'.strtolower($this->name)))
-        {
-            foreach ($config['defaults']->bundle_structure->dirs as $dir) {
-                if ( ! file_exists(__DIR__ . '/../../bundles/'.strtolower($this->name).'/'.$dir)) {
-                    return false;
-                }
-            }
-            return true;
-        }
-        return false;
-    }
-
-}

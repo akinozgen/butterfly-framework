@@ -14,3 +14,5 @@ $config = [
         realpath(__DIR__ . '/router.json')
     ), true)
 ];
+
+global $config;

@@ -2,14 +2,18 @@
 
 namespace Butterfly\Bundles\User\Controllers;
 
+use Butterfly\System\ActiveClass;
 use Butterfly\System\Parameters;
 use Butterfly\System\Request;
 
-class Home
+class Home extends ActiveClass
 {
 
     public function main(Parameters $parameters = null, Request $request = null) {
-        echo "Welcome to User, default:main";
+        echo $this->getTwig()->render('user/home/main.twig', [
+            'title' => 'Main',
+            'message' => 'Greetings from home:user:main...',
+        ]);
     }
 
 }

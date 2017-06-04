@@ -8,13 +8,14 @@
     //endregion
     //region Requires
     require_once '../vendor/autoload.php';
-    require_once '../core/Config/config.php';
+    require_once '../core/Config/config.php';;
     require_once '../core/System/Exception.php';
     require_once '../core/System/UrlParser.php';
     require_once '../core/System/Route.php';
     require_once '../core/System/Parameters.php';
     require_once '../core/System/Root.php';
     require_once '../core/System/Request.php';
+    require_once '../core/System/ActiveClass.php';
     //endregion
     //region Usings
     use \Butterfly\System\UrlParser as Url;
