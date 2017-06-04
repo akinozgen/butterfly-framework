@@ -1,9 +1,18 @@
 {
-  "001": "File \"%filename\" not found.",
-  "002": "Bundle \"%bundlename\" not found.",
-  "003": "Controller \"%controller\" not found.",
-  "004": "Method \"%method\" not found.",
-  "005": "Database \"%database\" configuration not found.",
-  "006": "Unable to connect database from configuration \"%database\"",
-  "007": "Database authorization error from configuration \"%database\""
+    "001": "File \"%filename\" not found.",
+    "002": "Bundle \"%bundlename\" not found.",
+    "003": "Controller \"%controller\" not found.",
+    "004": "Method \"%method\" not found.",
+    "005": "Database \"%database\" configuration not found.",
+    "006": "Unable to connect database from configuration \"%database\"",
+    "007": "Database authorization error from configuration \"%database\"",
+    "008": "Unknown cli command %cmd",
+    "009": "No command requested.",
+    "010": "Unexpected command for '%cmd'",
+    "011": "Directory '%directory' exists. Possibly have files inside.",
+    "012": "Bundle name not specified.",
+    "013": "File write error. Changes rolled back.",
+    "014": "Bundle removing error. Possibly permission error. Please do it manually as root.",
+    "015": "Bundle exist and nothing wrong.",
+    "016": "Bundle doesn't exist or someting wrong."
 }

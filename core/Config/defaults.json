@@ -2,7 +2,14 @@
     "route": {
         "name": "/",
         "bundle": "home",
-        "controller": "welcome",
+        "controller": "default",
         "method": "main"
+    },
+    "allowed_cli_commands": [ "create", "bundle", "controller", "method", "remove", "check" ],
+    "bundle_structure": {
+        "dirs": ["Config","Controllers","Helpers","Models","Views"],
+        "files": [
+            "Controllers/home.php"
+        ]
     }
 }

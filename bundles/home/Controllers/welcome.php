@@ -14,7 +14,7 @@ use Butterfly\System\Request;
 class Welcome
 {
 
-    function main(Parameters $parameters = null, Request $request = null) {
+    public function main(Parameters $parameters = null, Request $request = null) {
         print_r($request);
     }
 

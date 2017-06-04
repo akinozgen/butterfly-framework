@@ -1,0 +1,17 @@
+#!/usr/bin/php7.0
+<?php
+
+require_once './core/Config/config.php';
+require_once './core/System/Exception.php';
+require_once './core/Cli/Processor.php';
+require_once './core/Cli/Bundle.php';
+require_once './core/Cli/Controller.php';
+
+use Butterfly\System\Cli\Processor;
+
+try {
+    $processor = new Processor($argv, $argc, $config);
+} catch (\Butterfly\System\Exception $exception) {
+    echo $exception->getMessage();
+}
+echo "\n";
