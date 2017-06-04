@@ -16,5 +16,6 @@
     "015": "Bundle exist and nothing wrong.",
     "016": "Bundle doesn't exist or someting wrong.",
     "017": "Route '%route' not found.",
-    "018": "Route '%route' doesn't created."
+    "018": "Route '%route' doesn't created.",
+    "019": "Route '%route' doens't remove."
 }

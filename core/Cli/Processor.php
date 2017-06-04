@@ -69,7 +69,7 @@ class Processor
                         $route = readline();
 
                         if ($route) {
-                            $route = new Route($route, $create);
+                            $route = new Route($route, $controller->getClasspath());
 
                             if ($route->createRoute()) {
                                 echo "Route '{$route->getRoutepath()}' created for controller '{$route->getClasspath()}'";
@@ -83,12 +83,6 @@ class Processor
                 } catch (Exception $exception) {
                     echo $exception->getErrorMessage();
                 }
-                break;
-            case 'method':
-                $split = explode(':', $values[2]);
-                $bundle = $split[0];
-                $controller = $split[1];
-                $method = $split[2];
                 break;
             default: throw new Exception('010', ['cmd' => 'create']); break;
         }
@@ -106,20 +100,32 @@ class Processor
                 }
                 break;
             case 'controller':
-                $split = explode(':', $values[2]);
+                $split = explode(':', $values[3]);
                 $controller = new Controller($split[0], $split[1]);
 
                 try {
-                    $create = $controller->createController();
+                    $remove = $controller->removeController();
+
+                    if ($remove) {
+                        echo "Success!\n";
+                        echo "Route path for this controller [blank if not exists]: ";
+                        $route = readline();
+
+                        if ($route) {
+                            $route = new Route($route, $controller->getClasspath());
+
+                            if ($route->removeRoute()) {
+                                echo "Route '{$route->getRoutepath()}' for '{$route->getClasspath()}' removed.";
+                            } else {
+                                throw new Exception('019', [
+                                    'route' => $route->getRoutepath()
+                                ]);
+                            }
+                        }
+                    }
                 } catch (Exception $exception) {
                     echo $exception->getErrorMessage();
                 }
-                break;
-            case 'method':
-                $split = explode(':', $values[2]);
-                $bundle = $split[0];
-                $controller = $split[1];
-                $method = $split[2];
                 break;
             default: throw new Exception('010', ['cmd' => 'remove']); break;
         }
@@ -144,12 +150,6 @@ class Processor
                 $split = explode(':', $values[2]);
                 $bundle = $split[0];
                 $controller = $split[1];
-                break;
-            case 'method':
-                $split = explode(':', $values[2]);
-                $bundle = $split[0];
-                $controller = $split[1];
-                $method = $split[2];
                 break;
             default: throw new Exception('010', ['cmd' => 'remove']); break;
         }

@@ -37,6 +37,10 @@ class Controller
         $this->filename = __DIR__ . "/../../bundles/$bundle/Controllers/$controller.php";
     }
 
+    /**
+     * @return string
+     * @throws Exception
+     */
     public function createController() {
         if ( ! class_exists($this->classpath) OR ! file_exists($this->filename) ) {
             touch ($this->filename);
@@ -66,13 +70,28 @@ PHP
                 exec('rm "'.$this->filename.'"');
                 throw new Exception('013');
             }
-            else return $this->classpath;
+            else return true;
         } else {
             throw new Exception("019", [
                 'bundle' => $this->bundle,
                 'controller' => $this->controller
             ]);
         }
+    }
+
+    public function removeController() {
+        if ( file_exists($this->filename) ) {
+            unlink($this->filename);
+        }
+        return ( ! file_exists($this->filename) );
+    }
+
+    /**
+     * @return string
+     */
+    public function getClasspath(): string
+    {
+        return $this->classpath;
     }
 
 }

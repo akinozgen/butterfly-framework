@@ -61,7 +61,14 @@ class Root
                     'bundlename' => $route->getBundle()
                 ]
             );
-        } else
+        } else if ( ! $this->controllerExists($route->getBundle(), $route->getController())) {
+            throw new Exception(
+                "003",
+                [
+                    'controller' => $route->getController()
+                ]
+            );
+        }
 
         require_once __DIR__."/../../bundles/{$route->getBundle()}/Controllers/{$route->getController()}.php";
 
@@ -70,23 +77,13 @@ class Root
             $this->method = new $class();
             $this->method->$method($this->parameters, $this->request);
             // Magic is done. Go home...
-
         } else {
-             if ( ! $this->controllerExists($route->getBundle(), $route->getController())) {
-                throw new Exception(
-                    "003",
-                    [
-                        'controller' => $route->getController()
-                    ]
-                );
-            } else if ( ! method_exists($class, $method) ) {
-                throw new Exception(
-                    "004",
-                    [
-                        'method' => $route->getMethod()
-                    ]
-                );
-            }
+            throw new Exception(
+                "004",
+                [
+                    'method' => $route->getMethod()
+                ]
+            );
         }
     }
 

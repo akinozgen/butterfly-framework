@@ -55,6 +55,17 @@ class Route
         return $write;
     }
 
+    public function removeRoute() {
+        $routes = json_decode(file_get_contents(__DIR__ . '/../../core/Config/router.json'), true);
+        unset($routes[$this->routepath]);
+        $write = file_put_contents(
+            __DIR__ . '/../../core/Config/router.json',
+            str_replace("\\/", "/", json_encode($routes, JSON_PRETTY_PRINT))
+        );
+
+        return $write;
+    }
+
     /**
      * @return mixed
      */
