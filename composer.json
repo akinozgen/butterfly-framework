@@ -7,5 +7,7 @@
             "email": "akinozgen17@outlook.com"
         }
     ],
-    "require": {}
+    "require": {
+        "twig/twig": "1.6.5"
+    }
 }
