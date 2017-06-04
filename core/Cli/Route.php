@@ -33,12 +33,8 @@ class Route
      */
     function __construct($route, $classpath, $method = 'main')
     {
-        $split = explode("\\", $classpath);
-        $this->classpath = $classpath;
+        $this->parseClasspath($classpath);
         $this->routepath = substr($route, 0, 1) != '/' ? '/'.$route : $route;
-        $this->bundle = strtolower($split[3]);
-        $this->controller = strtolower($split[5]);
-        $this->method = $method;
     }
 
     /**
@@ -55,6 +51,9 @@ class Route
         return $write;
     }
 
+    /**
+     * @return bool|int
+     */
     public function removeRoute() {
         $routes = json_decode(file_get_contents(__DIR__ . '/../../core/Config/router.json'), true);
         unset($routes[$this->routepath]);
@@ -80,6 +79,21 @@ class Route
     public function getRoutepath()
     {
         return $this->routepath;
+    }
+
+    private function parseClasspath($path) {
+        if (strpos($path, ':') !== false) {
+            $split = explode(':', $path);
+            $this->classpath = "\\Butterfly\\Bundles\\".ucfirst($split[0]."\\Controllers\\".ucfirst($split[1]));
+            $this->bundle = strtolower($split[0]);
+            $this->controller = strtolower($split[1]);
+            $this->method = strtolower($split[2]);
+        } else {
+            $split = explode("\\", $path);
+            $this->bundle = strtolower($split[3]);
+            $this->controller = strtolower($split[5]);
+            $this->method = $split[6];
+        }
     }
 
 }

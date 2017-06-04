@@ -84,6 +84,15 @@ class Processor
                     echo $exception->getErrorMessage();
                 }
                 break;
+            case 'route':
+                $route = new Route($values[3], $values[4]);
+
+                if ($route->createRoute()) {
+                    echo "Success!";
+                } else {
+                    throw new Exception("018", [ 'route' => $route->getRoutepath() ]);
+                }
+                break;
             default: throw new Exception('010', ['cmd' => 'create']); break;
         }
     }
@@ -125,6 +134,15 @@ class Processor
                     }
                 } catch (Exception $exception) {
                     echo $exception->getErrorMessage();
+                }
+                break;
+            case 'route':
+                $route = new Route($values[3], $values[4]);
+
+                if ($route->removeRoute()) {
+                    echo "Success!";
+                } else {
+                    throw new Exception("019", [ 'route' => $route->getRoutepath() ]);
                 }
                 break;
             default: throw new Exception('010', ['cmd' => 'remove']); break;

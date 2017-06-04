@@ -14,7 +14,8 @@
         "controller",
         "method",
         "remove",
-        "check"
+        "check",
+        "route"
     ],
     "bundle_structure": {
         "dirs": [
