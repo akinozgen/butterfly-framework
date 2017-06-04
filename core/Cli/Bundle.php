@@ -87,7 +87,7 @@ class Home extends ActiveClass
     public function main(Parameters \$parameters = null, Request \$request = null) {
         echo \$this->getTwig()->render('$name/home/main.twig', [
             'title' => 'Main',
-            'message' => 'Greetings from home:$name:main...',
+            'message' => 'Greetings from $name:home:main...',
         ]);
     }
 
@@ -176,7 +176,7 @@ PHP
         <hr>
 
         <footer>
-            <p>&copy; $now_year Company, Inc.</p>
+            <p>&copy; $now_year {{ application_name }}, Inc.</p>
         </footer>
     </div> <!-- /container -->
 </div>

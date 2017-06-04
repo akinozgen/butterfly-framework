@@ -12,7 +12,7 @@ class Home extends ActiveClass
     public function main(Parameters $parameters = null, Request $request = null) {
         echo $this->getTwig()->render('user/home/main.twig', [
             'title' => 'Main',
-            'message' => 'Greetings from home:user:main...',
+            'message' => 'Greetings from user:home:main...',
         ]);
     }
 

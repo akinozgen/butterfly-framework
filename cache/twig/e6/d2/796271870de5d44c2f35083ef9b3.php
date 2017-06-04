@@ -104,7 +104,10 @@ class __TwigTemplate_e6d2796271870de5d44c2f35083ef9b3 extends Twig_Template
         <hr>
 
         <footer>
-            <p>&copy; 2017 Company, Inc.</p>
+            <p>&copy; 2017 ";
+        // line 80
+        echo twig_escape_filter($this->env, (isset($context["application_name"]) ? $context["application_name"] : null), "html", null, true);
+        echo ", Inc.</p>
         </footer>
     </div> <!-- /container -->
 </div>
@@ -136,6 +139,6 @@ class __TwigTemplate_e6d2796271870de5d44c2f35083ef9b3 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  76 => 52,  53 => 32,  24 => 6,  17 => 1,);
+        return array (  107 => 80,  76 => 52,  53 => 32,  24 => 6,  17 => 1,);
     }
 }
