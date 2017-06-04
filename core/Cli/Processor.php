@@ -57,9 +57,32 @@ class Processor
                 }
                 break;
             case 'controller':
-                $split = explode(':', $values[2]);
-                $bundle = $split[0];
-                $controller = $split[1];
+                $split = explode(':', $values[3]);
+                $controller = new Controller($split[0], $split[1]);
+
+                try {
+                    $create = $controller->createController();
+
+                    if ($create) {
+                        echo "Success!\n";
+                        echo "Route name for this controller [blank if you dont want to add]: ";
+                        $route = readline();
+
+                        if ($route) {
+                            $route = new Route($route, $create);
+
+                            if ($route->createRoute()) {
+                                echo "Route '{$route->getRoutepath()}' created for controller '{$route->getClasspath()}'";
+                            } else {
+                                throw new Exception("018", [
+                                    'route' => $route->getRoutepath()
+                                ]);
+                            }
+                        }
+                    }
+                } catch (Exception $exception) {
+                    echo $exception->getErrorMessage();
+                }
                 break;
             case 'method':
                 $split = explode(':', $values[2]);
@@ -84,8 +107,13 @@ class Processor
                 break;
             case 'controller':
                 $split = explode(':', $values[2]);
-                $bundle = $split[0];
-                $controller = $split[1];
+                $controller = new Controller($split[0], $split[1]);
+
+                try {
+                    $create = $controller->createController();
+                } catch (Exception $exception) {
+                    echo $exception->getErrorMessage();
+                }
                 break;
             case 'method':
                 $split = explode(':', $values[2]);

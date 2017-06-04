@@ -6,6 +6,7 @@ require_once './core/System/Exception.php';
 require_once './core/Cli/Processor.php';
 require_once './core/Cli/Bundle.php';
 require_once './core/Cli/Controller.php';
+require_once './core/Cli/Route.php';
 
 use Butterfly\System\Cli\Processor;
 

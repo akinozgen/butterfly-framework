@@ -15,5 +15,6 @@
     "014": "Bundle removing error. Possibly permission error. Please do it manually as root.",
     "015": "Bundle exist and nothing wrong.",
     "016": "Bundle doesn't exist or someting wrong.",
-    "017": "Route '%route' not found."
+    "017": "Route '%route' not found.",
+    "018": "Route '%route' doesn't created."
 }
