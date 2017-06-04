@@ -123,7 +123,7 @@ class Processor
                         if ($route) {
                             $route = new Route($route, $controller->getClasspath());
 
-                            if ($route->removeRoute()) {
+                            if ($route->removeRoute($route)) {
                                 echo "Route '{$route->getRoutepath()}' for '{$route->getClasspath()}' removed.";
                             } else {
                                 throw new Exception('019', [
@@ -137,9 +137,7 @@ class Processor
                 }
                 break;
             case 'route':
-                $route = new Route($values[3], $values[4]);
-
-                if ($route->removeRoute()) {
+                if (Route::removeRoute($values[3])) {
                     echo "Success!";
                 } else {
                     throw new Exception("019", [ 'route' => $route->getRoutepath() ]);

@@ -54,9 +54,9 @@ class Route
     /**
      * @return bool|int
      */
-    public function removeRoute() {
+    public static function removeRoute($routeKey) {
         $routes = json_decode(file_get_contents(__DIR__ . '/../../core/Config/router.json'), true);
-        unset($routes[$this->routepath]);
+        unset($routes[substr($routeKey, 0, 1) != '/' ? '/'.$routeKey : $routeKey]);
         $write = file_put_contents(
             __DIR__ . '/../../core/Config/router.json',
             str_replace("\\/", "/", json_encode($routes, JSON_PRETTY_PRINT))
@@ -81,6 +81,9 @@ class Route
         return $this->routepath;
     }
 
+    /**
+     * @param string $path
+     */
     private function parseClasspath($path) {
         if (strpos($path, ':') !== false) {
             $split = explode(':', $path);
