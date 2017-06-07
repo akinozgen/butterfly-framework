@@ -85,7 +85,7 @@ class Route
      * @param string $path
      */
     private function parseClasspath($path) {
-        if (strpos($path, ':') !== false) {
+        if (strpos($path, '/') !== false) {
             $split = explode(':', $path);
             $this->classpath = "\\Butterfly\\Bundles\\".ucfirst($split[0]."\\Controllers\\".ucfirst($split[1]));
             $this->bundle = strtolower($split[0]);
