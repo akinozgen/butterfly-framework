@@ -56,7 +56,8 @@ class Route
      * @return bool|int
      */
     public static function removeRoute($routeKey) {
-        $routes = json_decode(file_get_contents(__DIR__ . '/../../core/Config/router.json'), true);
+        global $config;
+        $routes = $config['router'];
         unset($routes[substr($routeKey, 0, 1) != '/' ? '/'.$routeKey : $routeKey]);
         $write = file_put_contents(
             __DIR__ . '/../../core/Config/router.json',
