@@ -11,8 +11,10 @@ require_once './core/Cli/Route.php';
 use Butterfly\System\Cli\Processor;
 
 try {
-    $processor = new Processor($argv, $argc, $config);
+    $processor = new Processor($argv, $argc);
 } catch (\Butterfly\System\Exception $exception) {
     echo $exception->getMessage();
 }
+
+unset($processor); // we <3 memory;
 echo "\n";

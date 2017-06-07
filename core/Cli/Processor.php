@@ -16,24 +16,18 @@ use Butterfly\System\Exception;
 class Processor
 {
     /**
-     * @var array
-     */
-    private $config;
-
-    /**
      * Processor constructor.
      * @param array $values
      * @param int $count
-     * @param array $config
      * @throws Exception
      */
-    function __construct($values, $count, $config) {
+    function __construct($values, $count) {
+        global $config;
         if (
             $count > 0
             && @in_array($values[1], $config['defaults']->allowed_cli_commands) &&
             @in_array($values[2], $config['defaults']->allowed_cli_commands)
         ) {
-            $this->config = $config;
             switch ($values[1]) {
                 case 'create': $this->create($values); break;
                 case 'remove': $this->remove($values); break;
@@ -46,12 +40,13 @@ class Processor
     }
 
     private function create($values) {
+        global $config;
         switch ($values[2]) {
             case 'bundle':
                 $bundle = new Bundle(@$values[3]);
 
                 try {
-                    $bundle->createBundle($this->config);
+                    $bundle->createBundle($config);
                 } catch (Exception $exception) {
                     echo $exception->getMessage();
                 }
@@ -98,12 +93,13 @@ class Processor
     }
 
     private function remove($values) {
+        global $config;
         switch ($values[2]) {
             case 'bundle':
                 $bundle = new Bundle(@$values[3]);
 
                 try {
-                    $bundle->removeBundle($this->config);
+                    $bundle->removeBundle($config);
                 } catch (Exception $exception) {
                     echo $exception->getMessage();
                 }
@@ -148,12 +144,13 @@ class Processor
     }
 
     private function check($values) {
+        global $config;
         switch ($values[2]) {
             case 'bundle':
                 $bundle = new Bundle(@$values[3]);
 
                 try {
-                    if ($bundle->checkBundle($this->config)) {
+                    if ($bundle->checkBundle($config)) {
                         throw new Exception("015");
                     } else {
                         throw new Exception("016");
