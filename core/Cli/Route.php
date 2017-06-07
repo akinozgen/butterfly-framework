@@ -41,7 +41,8 @@ class Route
      * @return bool|int
      */
     public function createRoute() {
-        $routes = json_decode(file_get_contents(__DIR__ . '/../../core/Config/router.json'), true);
+        global $config;
+        $routes = $config['router'];
         $routes[$this->routepath] = $this->bundle.'/'.$this->controller.'/'.$this->method;
         $write = file_put_contents(
             __DIR__ . '/../../core/Config/router.json',
