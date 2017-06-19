@@ -15,7 +15,9 @@
         "method",
         "remove",
         "check",
-        "route"
+        "route",
+        "--help",
+        "-h"
     ],
     "bundle_structure": {
         "dirs": [
