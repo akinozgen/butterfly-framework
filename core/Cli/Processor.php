@@ -25,13 +25,15 @@ class Processor
         global $config;
         if (
             $count > 0
-            && @in_array($values[1], $config['defaults']->allowed_cli_commands) &&
+            && @in_array($values[1], $config['defaults']->allowed_cli_commands) ||
             @in_array($values[2], $config['defaults']->allowed_cli_commands)
         ) {
             switch ($values[1]) {
                 case 'create': $this->create($values); break;
                 case 'remove': $this->remove($values); break;
                 case 'check':  $this->check($values); break;
+                case '--help': $this->help(); break;
+                case '-h':     $this->help(); break;
                 default: throw new Exception("008", ['cmd'=>$values[0]]); break;
             }
         } else {
@@ -166,6 +168,32 @@ class Processor
                 break;
             default: throw new Exception('010', ['cmd' => 'remove']); break;
         }
+    }
+
+    private function help() {
+        echo <<<TXT
+usage: butterfly [command] [sub-command] [value1] [value2 = ""]
+    commands:
+        create 
+        delete
+        check
+     sub-commands
+        [create, remove, check] bundle
+        [create, remove, check] controller
+        [create, remove] route
+     
+    examples: 
+        $ butterlfy create bundle deneme
+        $ butterfly create controller deneme:home
+            -- deneme is bundle name
+            -- home is controller name
+        $ butterfly create route login deneme:home:login
+            -- login is route key name
+            -- deneme is bundle name
+            -- home is controller name
+            -- login is method name
+TXT;
+
     }
 
 }
