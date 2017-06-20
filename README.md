@@ -86,17 +86,18 @@ In some of controller method (extended `ActiveClass`) system libraries can be us
  >Note: `Path` is global in twig so you can use `{{ Path.route('/login') }}` and other `Path` methods in twig files.
  
  
- --
  
  ## Using CLI
  
  CLI can do:
+ 
  
  |          | Create |   Remove   | Check |
  |----------|--------|------------|-------|
  |Bundle    |*       |*           |*      |
  |Controller|*       |*           |*      |
  |Route     |*       |*           |-      |
+
 
 CLI has main commands and this main commands have sub commands.
 
