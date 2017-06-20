@@ -14,6 +14,7 @@
     require_once '../core/System/Route.php';
     require_once '../core/System/Parameters.php';
     require_once '../core/System/Root.php';
+    require_once '../core/System/Path.php';
     require_once '../core/System/Request.php';
     require_once '../core/System/Database.php';
     require_once '../core/System/ActiveClass.php';

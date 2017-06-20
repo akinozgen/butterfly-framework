@@ -32,7 +32,8 @@ class Route
      * @param string $route
      * @param array $config
      */
-    function __construct($route_name, $config) {
+    function __construct($route_name) {
+        global $config;
         $route = $this->route_name($route_name, $config);
 
         if ($route['status'] == 'not_found') {
@@ -117,7 +118,13 @@ class Route
         return $this->bundle . '/' . $this->controller . '/' . $this->method;
     }
 
-    public function getRoutekey() {
-        return $this->route_key;
+    public function getRoutekey($trim_slashes = false) {
+        if ($trim_slashes) {
+            $route_key = ltrim($this->route_key, '/');
+            $route_key = rtrim($route_key, '/');
+            return $route_key;
+        } else {
+            return $this->route_key;
+        }
     }
 }

@@ -1,3 +1,4 @@
 {
-    "/": "home/welcome/main"
+    "/": "home/welcome/main",
+    "/login": "home/welcome/Main"
 }

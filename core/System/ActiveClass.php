@@ -17,6 +17,7 @@ class ActiveClass
     private $twig;
     private $database;
     private $loader;
+    private $path;
 
     /**
      * ActiveClass constructor.
@@ -32,6 +33,8 @@ class ActiveClass
 
         $this->database = new Database($config['database']);
         $this->loader = new Loader();
+        $this->path = new Path();
+        $this->twig->addGlobal('Path', $this->path);
     }
 
     /**
@@ -55,6 +58,14 @@ class ActiveClass
     public function getLoader(): Loader
     {
         return $this->loader;
+    }
+
+    /**
+     * @return Path
+     */
+    public function getPath()
+    {
+        return $this->path;
     }
 
 }

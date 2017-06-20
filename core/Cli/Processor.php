@@ -187,11 +187,11 @@ usage: butterfly [command] [sub-command] [value1] [value2 = ""]
         $ butterfly create controller deneme:home
             -- deneme is bundle name
             -- home is controller name
-        $ butterfly create route login deneme:home:login
+        $ butterfly create route login Butterfly\Bundles\Home\Controllers\Welcome\Main
             -- login is route key name
-            -- deneme is bundle name
-            -- home is controller name
-            -- login is method name
+            -- Home is bundle name
+            -- Welcome is controller name
+            -- Main is method name
 TXT;
 
     }

@@ -19,5 +19,6 @@
     "018": "Route '%route' doesn't created.",
     "019": "Route '%route' doens't remove.",
     "020": "Model '%model' doesn't exists",
-    "021": "Helper '%helper' doesn't exists"
+    "021": "Helper '%helper' doesn't exists",
+    "022": "Asset '%asset' doesn't exists"
 }
