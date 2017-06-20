@@ -39,6 +39,7 @@ class UrlParser
      */
     function __construct($config) {
         $this->uri = rtrim("http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]", '/');
+        $this->uri = str_replace(['?', '=', ' ', '%20'], '', $this->uri);
         $this->uri = str_replace(rtrim(URL, '/'), '', $this->uri);
         $this->uri = (!$this->uri) ? '/' : $this->uri;
 
