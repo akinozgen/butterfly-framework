@@ -1,12 +1,10 @@
 {
-    "demo": {
-        "name": "bttrfly_demo",
-        "charset": "utf8",
-        "provides": "mysql",
-        "host": {
-            "name": "localhost",
-            "user": "root",
-            "password": "toor"
-        }
+    "name": "butterfly_demo",
+    "charset": "utf8",
+    "driver": "mysql",
+    "host": {
+        "name": "localhost",
+        "user": "root",
+        "password": ""
     }
 }

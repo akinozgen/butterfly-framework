@@ -3,7 +3,7 @@
 $config = [
     'database' => json_decode(file_get_contents(
         realpath(__DIR__ . '/database.json')
-    )),
+    ), true),
     'errors' => json_decode(file_get_contents(
         realpath(__DIR__ . '/errors.json')
     ), true),

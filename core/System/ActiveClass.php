@@ -14,10 +14,8 @@ namespace Butterfly\System;
  */
 class ActiveClass
 {
-    /**
-     * @var \Twig_Environment
-     */
     private $twig;
+    private $database;
 
     /**
      * ActiveClass constructor.
@@ -25,15 +23,13 @@ class ActiveClass
     function __construct()
     {
         global $config;
-        $this->twig = new \Twig_Environment(
-            new \Twig_Loader_Filesystem(__DIR__.'/../../views'),
-            [
+        $this->twig = new \Twig_Environment(new \Twig_Loader_Filesystem(__DIR__.'/../../views'), [
                 'cache' => __DIR__.'/../../cache/twig',
                 'auto_reload' => true
-            ]
-        );
-
+            ]);
         $this->twig->addGlobal('application_name', $config['defaults']->meta->application_name);
+
+        $this->database = new Database($config['database']);
     }
 
     /**
