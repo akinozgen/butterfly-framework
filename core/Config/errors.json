@@ -17,5 +17,7 @@
     "016": "Bundle doesn't exist or someting wrong.",
     "017": "Route '%route' not found.",
     "018": "Route '%route' doesn't created.",
-    "019": "Route '%route' doens't remove."
+    "019": "Route '%route' doens't remove.",
+    "020": "Model '%model' doesn't exists",
+    "021": "Helper '%helper' doesn't exists"
 }

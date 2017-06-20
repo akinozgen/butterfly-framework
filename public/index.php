@@ -15,8 +15,9 @@
     require_once '../core/System/Parameters.php';
     require_once '../core/System/Root.php';
     require_once '../core/System/Request.php';
-    require_once  '../core/System/Database.php';
+    require_once '../core/System/Database.php';
     require_once '../core/System/ActiveClass.php';
+    require_once '../core/System/Loader.php';
     //endregion
     //region Usings
     use \Butterfly\System\UrlParser as Url;

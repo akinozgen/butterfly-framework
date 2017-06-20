@@ -16,6 +16,7 @@ class ActiveClass
 {
     private $twig;
     private $database;
+    private $loader;
 
     /**
      * ActiveClass constructor.
@@ -30,6 +31,7 @@ class ActiveClass
         $this->twig->addGlobal('application_name', $config['defaults']->meta->application_name);
 
         $this->database = new Database($config['database']);
+        $this->loader = new Loader();
     }
 
     /**
@@ -37,6 +39,22 @@ class ActiveClass
      */
     public function getTwig(): \Twig_Environment {
         return $this->twig;
+    }
+
+    /**
+     * @return Database
+     */
+    public function getDatabase(): Database
+    {
+        return $this->database;
+    }
+
+    /**
+     * @return Loader
+     */
+    public function getLoader(): Loader
+    {
+        return $this->loader;
     }
 
 }
