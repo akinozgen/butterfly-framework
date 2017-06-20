@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: akinozgen
- * Date: 6/4/17
- * Time: 12:36 AM
- */
 
 namespace Butterfly\Bundles\Home\Controllers;
 
@@ -16,6 +10,9 @@ class Welcome extends ActiveClass
 {
 
     public function main(Parameters $parameters = null, Request $request = null) {
+
+        $this->getLoader()->loadHelper('example_helper');
+
         echo $this->getTwig()->render('home/welcome/main.twig', [
             'title' => 'Main',
             'message' => 'Greetings from home:welcome:main...',
