@@ -71,11 +71,11 @@ In some of controller method (extended `ActiveClass`) system libraries can be us
  
  Example of loading model:
  
- ![Model Loading](https://image.prntscr.com/image/WkoDd03RQGmzvIVNH5ZxPg.png)
+ ![Model Loading](https://image.prntscr.com/image/NCfR1iMnQK6amL2ZzXYbrQ.png)
  
  Example of loading helper:
  
- ![Helper Loading](https://image.prntscr.com/image/3p5BHyI1T1O4xBFvnXV05A.png)
+ ![Helper Loading](https://image.prntscr.com/image/UmIqkqVQSBySnZ0Gi3v_-A.png)
  
  View loading is different from them. Because my template engine is `Twig` and using native `Twig` library from `packagist.org`
  

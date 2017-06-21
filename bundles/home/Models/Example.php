@@ -15,12 +15,9 @@ class Example extends ActiveClass
      * Example constructor.
      * @param object $data form database fetch::obj
      */
-    function __construct($data)
+    function __construct()
     {
-        $this->id = $data->id;
-        $this->key = $data->key;
-        $this->content = $data->content;
-        $this->image = $data->image;
+
     }
 
     /**

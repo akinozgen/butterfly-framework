@@ -40,8 +40,8 @@ class Loader
     public function loadHelper($classpath) {
         // Ex.Classpath: \Butterfly\Bundles\[BundleName]\Helpers\[HelperName]
         $split = explode("\\", $classpath);
-        $bundleName = strtolower($split[3]);
-        $helperName = strtolower($split[5]);
+        $bundleName = @strtolower($split[3]);
+        $helperName = @strtolower($split[5]);
 
         $filePath = realpath(__DIR__ . '/../../bundles/' . $bundleName . '/Helpers/' . $helperName . '.php');
 
