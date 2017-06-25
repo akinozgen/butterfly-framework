@@ -32,7 +32,7 @@ class UserFactory extends ActiveClass
             ], 'AND')
             ->exec(Database::FETCH_OBJ);
 
-        if ($data ) {
+        if ($data) {
             if (isset($data) && $data->rowCount() > 0) {
                 return new User($data->fetch());
             }
