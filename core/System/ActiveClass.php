@@ -38,8 +38,9 @@ class ActiveClass
         $this->database = new Database($config['database']);
         $this->loader = new Loader();
         $this->path = new Path();
-        $this->twig->addGlobal('Path', $this->path);
         $this->sessions = new Sessions($config['defaults']->session_key);
+        $this->twig->addGlobal('Path', $this->path);
+        $this->twig->addGlobal('Sessions', $this->sessions);
     }
 
     /**

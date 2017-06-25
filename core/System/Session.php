@@ -30,7 +30,7 @@ class Sessions
      * @return Session|null
      */
     public function get($key) {
-        return isset($_SESSION[$this->keyname][$key]) ? new Session($_SESSION[$this->keyname][$key]) : null;
+        return isset($_SESSION[$this->keyname][$key]) ? new Session($_SESSION[$this->keyname][$key]->getKey(), $_SESSION[$this->keyname][$key]->getValue()) : null;
     }
 
     /**
@@ -49,10 +49,10 @@ class Session {
     private $key;
     private $value;
 
-    function __construct($data)
+    function __construct($key, $value)
     {
-        $this->key = $data['key'];
-        $this->value = $data['value'];
+        $this->key = $key;
+        $this->value = $value;
     }
 
     /**
