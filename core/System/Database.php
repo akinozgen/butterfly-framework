@@ -247,7 +247,7 @@ class Database extends \PDO
      */
     public function exec($fetchType = parent::FETCH_ASSOC)
     {
-        $this->PrepareQuery();
+        $this->prepareQuery();
 
         if ( ! $fetchType )
             return $this->query($this->query);
