@@ -2,8 +2,8 @@
 
 namespace Butterfly\Bundles\Home\Controllers;
 
-use Butterfly\Bundles\Home\Models\LoginPost;
 use Butterfly\Bundles\Home\Models\LoginPostFactory;
+use Butterfly\Bundles\Home\Models\RegisterPostFactory;
 use Butterfly\Bundles\Home\Models\SpecificationsFactory;
 use Butterfly\Bundles\Home\Models\UserFactory;
 use Butterfly\System\ActiveClass;
@@ -29,15 +29,16 @@ class Home extends ActiveClass
     }
 
     public function login(Parameters $parameters = null, Request $request = null) {
+        $this->getLoader()->loadModel('\\Butterfly\\Bundles\\Home\\Models\\RegisterPost');
         $this->getLoader()->loadModel('\\Butterfly\\Bundles\\Home\\Models\\LoginPost');
         $this->getLoader()->loadModel('\\Butterfly\\Bundles\\Home\\Models\\User');
 
-        if ($request->isPost()) {
+        if ($request->isPost() && $request->getPostValue('submit') == 'login') {
             $loginPostFactory = new LoginPostFactory();
             $userFactory = new UserFactory();
-            $data = $loginPostFactory->get($request);
+            $user = $loginPostFactory->get($request);
 
-            $login = $userFactory->getByRequest($data);
+            $login = $userFactory->getByRequest($user);
 
             if ($login) {
                 $userFactory->login($login);
@@ -46,7 +47,26 @@ class Home extends ActiveClass
             }
         }
 
+        if ($request->isPost() && $request->getPostValue('submit') == 'register') {
+            $registerPostFactory = new RegisterPostFactory();
+            $userFactory = new UserFactory();
+            $user = $registerPostFactory->get($request);
+            $result = $userFactory->set($user);
+
+            if ($result) {
+                $user = $userFactory->getByEmail($user->getEmail());
+                $userFactory->login($user);
+            } else {
+                $this->getSessions()->add(new Session('error', 'Kayıt hatası. Hata: ' . $result->errorInfo()));
+            }
+        }
+
         echo $this->getTwig()->render('home/home/sub/login.twig');
+    }
+
+    public function logout() {
+        session_destroy();
+        $this->getPath()->redirect_route('/login');
     }
 
 }
