@@ -1,10 +1,67 @@
 {% extends 'home/home/masterpage.twig' %}
 
 {% block container %}
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        A architecto, at cum dignissimos distinctio esse explicabo
-        facilis illo iste libero, modi, nam odio odit pariatur
-        reprehenderit repudiandae saepe veritatis voluptatum?
-    </p>
+    <div class="row">
+        {% for blog in blogs %}
+            <div class="col-sm-6 col-xs-12">
+                <div class="blog well well-sm">
+                    <div class="row">
+                        <div class="col-sm-4 col-xs-12">
+                            <div class="blog-image">
+                                <img src="{{ blog.image }}" alt="{{ blog.title }}" style="width: 100%" />
+                            </div>
+                            <br />
+                            <div class="tags well-sm well">{{ blog.tags }}</div>
+                        </div>
+
+                        <div class="col-sm-8 col-xs-12">
+                            <div class="blog-body">
+                                <div class="blog-header">
+                                    <h3 class="blog-title">
+                                        {{ blog.title }}
+                                        <small>
+                                            <a href="{{ Path.route("/icerik/blog/sil", {'id': blog.id }) }}"
+                                               class="btn btn-xs btn-danger">
+                                                <i class="glyphicon glyphicon-remove"></i>
+                                            </a>
+                                            <a href="{{ Path.route("/icerik/blog/duzenle", {'id': blog.id }) }}"
+                                               class="btn btn-xs btn-warning">
+                                                <i class="glyphicon glyphicon-edit"></i>
+                                            </a>
+                                        </small>
+                                    </h3>
+                                </div>
+
+                                <div class="blog-content">
+                                    <p>{{ blog.content|raw }}</p>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block styles %}
+    <style>
+        h3.blog-title {
+            margin-top: 0;
+        }
+        .tags {
+            color: rgb(145, 145, 145);
+            font-style: italic;
+            font-size: 12px;
+        }
+        .blog.well {
+            overflow: hidden;
+            position: relative;
+        }
+        .blog-content {
+            height: 200px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+    </style>
 {% endblock %}

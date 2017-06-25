@@ -1,0 +1,41 @@
+{% extends 'home/home/masterpage.twig' %}
+
+{% block container %}
+    <div class="col-sm-12 col-xs-12">
+
+        <form method="post" class="alert alert-danger">
+            <p>
+                <strong>Uyarı!</strong> Bu yazıyı silmeyi talep etmişsiniz. Devam ederseniz bu yazı sonsuza kadar silinecek.
+            </p>
+            <br /><br />
+            <button type="submit" name="action" value="delete" class="btn btn-danger btn-sm">Devam</button>
+            <button type="submit" name="action" value="cancel" class="btn btn-primary btn-sm">İptal</button>
+        </form>
+
+        <div class="blog well well-sm">
+            <div class="row">
+                <div class="col-sm-4 col-xs-12">
+                    <div class="blog-image">
+                        <img src="{{ blog.image }}" alt="{{ blog.title }}" style="width: 100%" />
+                    </div>
+                    <br />
+                    <div class="tags well-sm well">{{ blog.tags }}</div>
+                </div>
+
+                <div class="col-sm-8 col-xs-12">
+                    <div class="blog-body">
+                        <div class="blog-header">
+                            <h3 class="blog-title">
+                                {{ blog.title }}
+                            </h3>
+                        </div>
+
+                        <div class="blog-content">
+                            <p>{{ blog.content|raw }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

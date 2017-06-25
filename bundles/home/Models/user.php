@@ -40,6 +40,19 @@ class UserFactory extends ActiveClass
         return null;
     }
 
+    public function get($id) {
+        $data = $this->getDatabase()->clean()
+            ->select('users', 'id, email, name')
+            ->where([ 'id' => $id ])
+            ->exec(Database::FETCH_OBJ);
+
+        if ($data) {
+            return new User($data->fetch());
+        } else {
+            return null;
+        }
+    }
+
     /**
      * @param $email
      * @return User|null
@@ -111,11 +124,11 @@ class User {
     function __construct($data)
     {
         /**@var User $data*/
-        $this->id = $data->id;
-        $this->email = $data->email;
-        $this->name = $data->name;
-        $this->password = $data->password;
-        $this->last_login = $data->last_login;
+        $this->id = isset($data->id) ? $data->id : null;
+        $this->email = isset($data->email) ? $data->email : null;
+        $this->name = isset($data->name) ? $data->name : null;
+        $this->password = isset($data->password) ? $data->password : null;
+        $this->last_login = isset($data->last_login) ? $data->last_login : null;
     }
 
     /**
