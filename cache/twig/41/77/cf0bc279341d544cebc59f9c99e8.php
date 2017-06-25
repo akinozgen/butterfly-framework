@@ -29,28 +29,29 @@ class __TwigTemplate_4177cf0bc279341d544cebc59f9c99e8 extends Twig_Template
         $this->displayBlock('styles', $context, $blocks);
         // line 5
         echo "<body>
+
     ";
-        // line 6
-        $this->env->loadTemplate("home/home/inc/header.twig")->display($context);
         // line 7
-        echo "    <div class=\"container\">
-        <div class=\"container\">
-            ";
-        // line 9
-        $this->displayBlock('container', $context, $blocks);
+        $this->env->loadTemplate("home/home/inc/header.twig")->display($context);
+        // line 8
+        echo "
+    <div class=\"container\">
+        ";
         // line 10
-        echo "            ";
-        $this->env->loadTemplate("home/home/inc/footer.twig")->display($context);
+        $this->displayBlock('container', $context, $blocks);
         // line 11
-        echo "        </div>
-    </div>
+        echo "    </div>
+
     ";
         // line 13
-        $this->env->loadTemplate("home/home/inc/scripts.twig")->display($context);
+        $this->env->loadTemplate("home/home/inc/footer.twig")->display($context);
         // line 14
         echo "    ";
-        $this->displayBlock('scripts', $context, $blocks);
+        $this->env->loadTemplate("home/home/inc/scripts.twig")->display($context);
         // line 15
+        echo "    ";
+        $this->displayBlock('scripts', $context, $blocks);
+        // line 16
         echo "</body>
 </html>";
     }
@@ -60,12 +61,12 @@ class __TwigTemplate_4177cf0bc279341d544cebc59f9c99e8 extends Twig_Template
     {
     }
 
-    // line 9
+    // line 10
     public function block_container($context, array $blocks = array())
     {
     }
 
-    // line 14
+    // line 15
     public function block_scripts($context, array $blocks = array())
     {
     }
@@ -82,6 +83,6 @@ class __TwigTemplate_4177cf0bc279341d544cebc59f9c99e8 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  67 => 14,  62 => 9,  57 => 4,  52 => 15,  49 => 14,  47 => 13,  43 => 11,  40 => 10,  38 => 9,  34 => 7,  32 => 6,  29 => 5,  26 => 4,  24 => 3,  20 => 1,);
+        return array (  68 => 15,  63 => 10,  58 => 4,  53 => 16,  50 => 15,  47 => 14,  45 => 13,  41 => 11,  39 => 10,  35 => 8,  33 => 7,  29 => 5,  26 => 4,  24 => 3,  20 => 1,);
     }
 }

@@ -29,22 +29,29 @@ class __TwigTemplate_126df82d8cd83f3c55eaf9f2f5850367 extends Twig_Template
     {
         // line 4
         echo "    <div class=\"row\">
-        <div class=\"col-md-4\">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class=\"btn btn-default\" href=\"#\" role=\"button\">View details &raquo;</a></p>
-        </div>
-        <div class=\"col-md-4\">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class=\"btn btn-default\" href=\"#\" role=\"button\">View details &raquo;</a></p>
-        </div>
-        <div class=\"col-md-4\">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class=\"btn btn-default\" href=\"#\" role=\"button\">View details &raquo;</a></p>
-        </div>
-    </div>
+        ";
+        // line 5
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["specs"]) ? $context["specs"] : null));
+        foreach ($context['_seq'] as $context["_key"] => $context["spec"]) {
+            // line 6
+            echo "            <div class=\"col-md-4\">
+                <h2>";
+            // line 7
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["spec"]) ? $context["spec"] : null), "title"), "html", null, true);
+            echo "</h2>
+                <p>";
+            // line 8
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["spec"]) ? $context["spec"] : null), "description"), "html", null, true);
+            echo "</p>
+            </div>
+        ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['spec'], $context['_parent'], $context['loop']);
+        $context = array_merge($_parent, array_intersect_key($context, $_parent));
+        // line 11
+        echo "    </div>
 ";
     }
 
@@ -60,6 +67,6 @@ class __TwigTemplate_126df82d8cd83f3c55eaf9f2f5850367 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  29 => 4,  26 => 3,);
+        return array (  52 => 11,  43 => 8,  39 => 7,  36 => 6,  32 => 5,  29 => 4,  26 => 3,);
     }
 }

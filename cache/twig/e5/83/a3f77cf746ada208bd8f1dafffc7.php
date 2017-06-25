@@ -19,28 +19,27 @@ class __TwigTemplate_e583a3f77cf746ada208bd8f1dafffc7 extends Twig_Template
         echo "<nav class=\"navbar navbar-inverse navbar-static-top\">
     <div class=\"container\">
         <div class=\"navbar-header\">
-            <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">
-                <span class=\"sr-only\">Toggle navigation</span>
-                <span class=\"icon-bar\"></span>
-                <span class=\"icon-bar\"></span>
-                <span class=\"icon-bar\"></span>
-            </button>
-            <a class=\"navbar-brand\" href=\"#\">";
-        // line 10
+            <!-- Path.route('/') is generates link to / route (root) -->
+            <a href=\"";
+        // line 5
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["Path"]) ? $context["Path"] : null), "route", array(0 => "/"), "method"), "html", null, true);
+        echo "\" class=\"navbar-brand\">
+                ";
+        // line 6
         echo twig_escape_filter($this->env, (isset($context["application_name"]) ? $context["application_name"] : null), "html", null, true);
-        echo "</a>
+        echo "
+            </a>
         </div>
-        <div id=\"navbar\" class=\"navbar-collapse collapse\">
-            <form class=\"navbar-form navbar-right\">
-                <div class=\"form-group\">
-                    <input type=\"text\" placeholder=\"Email\" class=\"form-control\">
-                </div>
-                <div class=\"form-group\">
-                    <input type=\"password\" placeholder=\"Password\" class=\"form-control\">
-                </div>
-                <button type=\"submit\" class=\"btn btn-success\">Sign in</button>
-            </form>
-        </div><!--/.navbar-collapse -->
+
+        <div class=\"collapse navbar-collapse pull-right\">
+            <ul class=\"nav navbar-nav\">
+                <!-- Path.route('/login') is generates link to /login route -->
+                <li><a href=\"";
+        // line 13
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["Path"]) ? $context["Path"] : null), "route", array(0 => "/login"), "method"), "html", null, true);
+        echo "\">Giriş Yap</a></li>
+            </ul>
+        </div>
     </div>
 </nav>";
     }
@@ -57,6 +56,6 @@ class __TwigTemplate_e583a3f77cf746ada208bd8f1dafffc7 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  28 => 10,  17 => 1,);
+        return array (  37 => 13,  27 => 6,  23 => 5,  17 => 1,);
     }
 }
