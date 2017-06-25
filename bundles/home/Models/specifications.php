@@ -5,7 +5,6 @@
  * Date: 6/25/17
  * Time: 2:00 PM
  */
-
 namespace Butterfly\Bundles\Home\Models;
 
 use Butterfly\System\ActiveClass;
@@ -13,10 +12,9 @@ use Butterfly\System\Database;
 
 class SpecificationsFactory extends ActiveClass
 {
-
     function __construct()
     {
-
+        parent::__construct();
     }
 
     /**
@@ -31,8 +29,8 @@ class SpecificationsFactory extends ActiveClass
                     'id' => $id
                 ])
                 ->exec(Database::FETCH_OBJ);
-            if (isset($data) && $data->rowCount() > 0) {
-                return new Specification($data->fetch());
+            if ($data) {
+                 return new Specification($data->fetch());
             } else {
                 return null;
             }
@@ -40,18 +38,19 @@ class SpecificationsFactory extends ActiveClass
     }
 
     public function getAll() {
+        $specs = [];
         $data = $this->getDatabase()->clean()
             ->select('specifications', '*')
             ->order('created', 'desc')
             ->exec(Database::FETCH_OBJ);
 
-        if (isset($data) && $data->rowCount() > 0) {
+        if ($data) {
             foreach ($data->fetchAll() as $spec) {
-                return yield new Specification($spec);
+                $specs[] = new Specification($spec);
             }
-        } else {
-            return null;
         }
+
+        return $specs;
     }
 
 }
