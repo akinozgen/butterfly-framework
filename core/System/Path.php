@@ -34,12 +34,23 @@ class Path
         return $this->asset('js/' . rtrim(ltrim($uri, '/'), '/'));
     }
 
-    public function route($route_key) {
+    public function route($route_key, $parameters = false) {
         global $config;
         $route = new Route($route_key);
         if ($route) {
 
-            return URL . $route->getRoutekey(true);
+            if ($parameters) {
+                $params = "/";
+
+                foreach ($parameters as $key => $value) {
+                    $params .= "$key/$value/";
+                }
+                $params = rtrim($params, '/');
+
+                return URL . $route->getRoutekey(true) . $params;
+            } else {
+                return URL . $route->getRoutekey(true);
+            }
 
         } else {
             throw new Exception('017', [ 'route' => $route_key ]);
