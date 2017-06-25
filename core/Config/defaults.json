@@ -33,5 +33,6 @@
     "errors": {
         "show_error_codes": true,
         "show_error_texts": true
-    }
+    },
+    "session_key": "butterfly_sessions"
 }

@@ -18,6 +18,7 @@ class ActiveClass
     private $database;
     private $loader;
     private $path;
+    private $sessions;
 
     /**
      * ActiveClass constructor.
@@ -38,6 +39,7 @@ class ActiveClass
         $this->loader = new Loader();
         $this->path = new Path();
         $this->twig->addGlobal('Path', $this->path);
+        $this->sessions = new Sessions($config['defaults']->session_key);
     }
 
     /**
@@ -69,6 +71,14 @@ class ActiveClass
     public function getPath()
     {
         return $this->path;
+    }
+
+    /**
+     * @return Sessions
+     */
+    public function getSessions()
+    {
+        return $this->sessions;
     }
 
 }

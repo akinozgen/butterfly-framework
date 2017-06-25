@@ -9,7 +9,81 @@
 namespace Butterfly\System;
 
 
-class Session
+class Sessions
 {
+    private $keyname;
 
+    function __construct($keyname = null)
+    {
+        $this->keyname = $keyname;
+    }
+
+    /**
+     * @param Session $session
+     */
+    public function add(Session $session) {
+        $_SESSION[$this->keyname][$session->getKey()] = $session;
+    }
+
+    /**
+     * @param string $key
+     * @return Session|null
+     */
+    public function get($key) {
+        return isset($_SESSION[$this->keyname][$key]) ? new Session($_SESSION[$this->keyname][$key]) : null;
+    }
+
+    /**
+     * @param Session|string $key
+     */
+    public function remove($key) {
+        if (is_string($key)) {
+            $_SESSION[$this->keyname][$key] = false;
+        } else {
+            $_SESSION[$this->keyname][$key->getKey()] = false;
+        }
+    }
+}
+
+class Session {
+    private $key;
+    private $value;
+
+    function __construct($data)
+    {
+        $this->key = $data['key'];
+        $this->value = $data['value'];
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getKey()
+    {
+        return $this->key;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * @param mixed $key
+     */
+    public function setKey($key)
+    {
+        $this->key = $key;
+    }
+
+    /**
+     * @param mixed $value
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+    }
 }
