@@ -1,4 +1,5 @@
-#!/usr/bin/php7.0
+#!/usr/bin/php
+
 <?php
 
 require_once './core/Config/config.php';
