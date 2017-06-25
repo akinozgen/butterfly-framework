@@ -29,12 +29,12 @@ class __TwigTemplate_4177cf0bc279341d544cebc59f9c99e8 extends Twig_Template
         $this->displayBlock('styles', $context, $blocks);
         // line 5
         echo "<body>
-    <div class=\"container\">
-        ";
-        // line 7
+    ";
+        // line 6
         $this->env->loadTemplate("home/home/inc/header.twig")->display($context);
-        // line 8
-        echo "        <div class=\"container\">
+        // line 7
+        echo "    <div class=\"container\">
+        <div class=\"container\">
             ";
         // line 9
         $this->displayBlock('container', $context, $blocks);
@@ -82,6 +82,6 @@ class __TwigTemplate_4177cf0bc279341d544cebc59f9c99e8 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  67 => 14,  62 => 9,  57 => 4,  52 => 15,  49 => 14,  47 => 13,  43 => 11,  40 => 10,  38 => 9,  35 => 8,  33 => 7,  29 => 5,  26 => 4,  24 => 3,  20 => 1,);
+        return array (  67 => 14,  62 => 9,  57 => 4,  52 => 15,  49 => 14,  47 => 13,  43 => 11,  40 => 10,  38 => 9,  34 => 7,  32 => 6,  29 => 5,  26 => 4,  24 => 3,  20 => 1,);
     }
 }

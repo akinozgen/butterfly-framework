@@ -26,16 +26,19 @@ class __TwigTemplate_4c4be2081ad53b1f7e0bc5f5ebdbb7f0 extends Twig_Template
     <meta name=\"description\" content=\"\">
     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
     <!-- Bootstrap -->
-    <link rel=\"stylesheet\" href=\"//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css\">
-    <!-- Font-Awesome -->
-    <link rel=\"stylesheet\" href=\"//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css\">
-
+    <link rel=\"stylesheet\" href=\"";
+        // line 8
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["Path"]) ? $context["Path"] : null), "css", array(0 => "bootstrap.min.css"), "method"), "html", null, true);
+        echo "\">
+    <link rel=\"stylesheet\" href=\"";
+        // line 9
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["Path"]) ? $context["Path"] : null), "css", array(0 => "bootstrap-theme.min.css"), "method"), "html", null, true);
+        echo "\">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src=\"//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js\"></script>
     <script src=\"//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js\"></script>
     <![endif]-->
-    <script src=\"//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js\"></script>
 </head>";
     }
 
@@ -51,6 +54,6 @@ class __TwigTemplate_4c4be2081ad53b1f7e0bc5f5ebdbb7f0 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  17 => 1,  51 => 9,  46 => 15,  44 => 14,  39 => 11,  36 => 10,  34 => 9,  30 => 7,  28 => 6,  24 => 4,  22 => 4,  18 => 1,);
+        return array (  33 => 9,  29 => 8,  22 => 4,  17 => 1,);
     }
 }

@@ -17,11 +17,14 @@ class __TwigTemplate_6f91c6992b4a95fcc5ae21d71b635ac6 extends Twig_Template
     {
         // line 1
         echo "<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src=\"//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js\"></script>
-<script>window.jQuery || document.write('<script src=\"//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.0.min.js\"><\\/script>')</script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src=\"//netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js\"></script>
-
+<script src=\"";
+        // line 2
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["Path"]) ? $context["Path"] : null), "js", array(0 => "jquery.js"), "method"), "html", null, true);
+        echo "\"></script>
+<script src=\"";
+        // line 3
+        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["Path"]) ? $context["Path"] : null), "js", array(0 => "bootstrap.min.js"), "method"), "html", null, true);
+        echo "\"></script>
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <script>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
@@ -34,8 +37,13 @@ class __TwigTemplate_6f91c6992b4a95fcc5ae21d71b635ac6 extends Twig_Template
         return "home/home/inc/scripts.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  17 => 1,  51 => 9,  46 => 15,  44 => 14,  39 => 11,  36 => 10,  34 => 9,  30 => 7,  28 => 10,  24 => 4,  22 => 4,  18 => 1,);
+        return array (  24 => 3,  20 => 2,  17 => 1,);
     }
 }

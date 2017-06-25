@@ -16,7 +16,7 @@ class __TwigTemplate_e583a3f77cf746ada208bd8f1dafffc7 extends Twig_Template
     protected function doDisplay(array $context, array $blocks = array())
     {
         // line 1
-        echo "<nav class=\"navbar navbar-inverse navbar-fixed-top\">
+        echo "<nav class=\"navbar navbar-inverse navbar-static-top\">
     <div class=\"container\">
         <div class=\"navbar-header\">
             <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">
@@ -57,6 +57,6 @@ class __TwigTemplate_e583a3f77cf746ada208bd8f1dafffc7 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  17 => 1,  51 => 9,  46 => 15,  44 => 14,  39 => 11,  36 => 10,  34 => 9,  30 => 7,  28 => 10,  24 => 4,  22 => 4,  18 => 1,);
+        return array (  28 => 10,  17 => 1,);
     }
 }

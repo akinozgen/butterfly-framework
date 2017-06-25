@@ -16,14 +16,22 @@ class Path
     }
 
     public function asset($uri) {
-        $assetUrl = URL . 'public/' . $uri;
-        $assetPath = realpath(__DIR__ . '/../../assets/'.$uri);
+        $assetUrl = URL . 'public/' . rtrim(ltrim($uri, '/'), '/');
+        $assetPath = realpath(__DIR__ . '/../../public/'.$uri);
 
         if ($assetPath) {
             return $assetUrl;
         } else {
             throw new Exception('022', [ 'asset' => $uri ]);
         }
+    }
+
+    public function css($uri) {
+        return $this->asset('css/' . rtrim(ltrim($uri, '/'), '/'));
+    }
+
+    public function js($uri) {
+        return $this->asset('js/' . rtrim(ltrim($uri, '/'), '/'));
     }
 
     public function route($route_key) {
