@@ -10,6 +10,7 @@ use Butterfly\System\ActiveClass;
 use Butterfly\System\Parameters;
 use Butterfly\System\Request;
 use Butterfly\System\Session;
+use Butterfly\System\Validation;
 
 class Home extends ActiveClass
 {
@@ -54,6 +55,8 @@ class Home extends ActiveClass
      * Route is /login
      */
     public function login(Parameters $parameters = null, Request $request = null) {
+        // Array for values of view
+        $renderData = ['error' => []];
         // If user logged in then goto /
         if ($this->getSessions()->get('login')) {
             $this->getPath()->redirect_route('/');
@@ -88,22 +91,36 @@ class Home extends ActiveClass
             $userFactory = new UserFactory();
             // Get register form post values
             $user = $registerPostFactory->get($request);
-            // Insert new user into DB
-            $result = $userFactory->set($user);
-            // If insertation success
-            if ($result) {
-                // Get created user instance from its email
-                $user = $userFactory->getByEmail($user->getEmail());
-                // Do login with this user
-                $userFactory->login($user);
-                // Goto /
-                $this->getPath()->redirect_route('/');
+            // Create new validator instance
+            $validator = new Validation();
+            // Validate form fields
+            $validate  = $validator->validate_email($user->getEmail())
+                ->validate_pairs($user->getPassword(), $user->getRePassword())
+                ->validate_length($user->getPassword(), 6, 20)
+                ->get_results();// Commit Validator
+            // If validation successed
+            if ($validator->get_result()) {
+                // Insert new user into DB
+                $result = $userFactory->set($user);
+                // If insertation success
+                if ($result) {
+                    // Get created user instance from its email
+                    $user = $userFactory->getByEmail($user->getEmail());
+                    // Do login with this user
+                    $userFactory->login($user);
+                    // Goto /
+                    $this->getPath()->redirect_route('/');
+                } else {
+                    // Pass DB error to render data as array
+                    $renderData['error'][] = 'Kayıt başarısız. Hata: ' . $this->getDatabase()->errorInfo();
+                }
             } else {
-                $this->getSessions()->add(new Session('error', 'Kayıt hatası. Hata: ' . $result->errorInfo()));
+                // Pass errors to render data
+                $renderData['error'] = array_merge($renderData['error'], $validate);
             }
         }
         // Render view
-        echo $this->getTwig()->render('home/home/sub/login.twig');
+        echo $this->getTwig()->render('home/home/sub/login.twig', $renderData);
     }
 
     /**
