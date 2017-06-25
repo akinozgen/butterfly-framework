@@ -16,7 +16,7 @@ class Path
     }
 
     public function asset($uri) {
-        $assetUrl = URL . 'assets/' . $uri;
+        $assetUrl = URL . 'public/' . $uri;
         $assetPath = realpath(__DIR__ . '/../../assets/'.$uri);
 
         if ($assetPath) {
