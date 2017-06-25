@@ -10,6 +10,7 @@ namespace Butterfly\Bundles\Home\Models;
 
 use Butterfly\System\ActiveClass;
 use Butterfly\System\Database;
+use Butterfly\System\Session;
 
 class UserFactory extends ActiveClass
 {
@@ -35,7 +36,11 @@ class UserFactory extends ActiveClass
     }
 
     public function login(User $user) {
-
+        $this->getSessions()->add(new Session('email', $user->getEmail()));
+        $this->getSessions()->add(new Session('name', $user->getName()));
+        $this->getSessions()->add(new Session('id', $user->getId()));
+        $this->getSessions()->add(new Session('last_login', $user->getLastLogin()));
+        $this->getSessions()->add(new Session('login', true));
     }
 }
 

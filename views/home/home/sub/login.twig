@@ -1,6 +1,20 @@
 {% extends 'home/home/masterpage.twig' %}
 
 {% block container %}
+    {% if Sessions.get('error') %}
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{ Sessions.get('error').value }}
+                    {{ Sessions.remove('error') }}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-lg-4">
             <h2 class="margin-bottom-30">

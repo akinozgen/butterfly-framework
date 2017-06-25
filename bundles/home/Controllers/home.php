@@ -9,6 +9,7 @@ use Butterfly\Bundles\Home\Models\UserFactory;
 use Butterfly\System\ActiveClass;
 use Butterfly\System\Parameters;
 use Butterfly\System\Request;
+use Butterfly\System\Session;
 
 class Home extends ActiveClass
 {
@@ -40,6 +41,8 @@ class Home extends ActiveClass
 
             if ($login) {
                 $userFactory->login($login);
+            } else {
+                $this->getSessions()->add(new Session('error', 'Kullanıcı adı veya şifre hatalı.'));
             }
         }
 

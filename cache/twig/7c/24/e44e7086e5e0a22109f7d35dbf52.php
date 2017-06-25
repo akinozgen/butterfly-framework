@@ -29,7 +29,31 @@ class __TwigTemplate_7c24e44e7086e5e0a22109f7d35dbf52 extends Twig_Template
     public function block_container($context, array $blocks = array())
     {
         // line 4
-        echo "    <div class=\"row\">
+        echo "    ";
+        if ($this->getAttribute((isset($context["Sessions"]) ? $context["Sessions"] : null), "get", array(0 => "error"), "method")) {
+            // line 5
+            echo "        <div class=\"row\">
+            <div class=\"col-xs-12\">
+                <div class=\"alert alert-danger alert-dismissible\" role=\"alert\">
+                    <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                        <span aria-hidden=\"true\">&times;</span>
+                    </button>
+                    ";
+            // line 11
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["Sessions"]) ? $context["Sessions"] : null), "get", array(0 => "error"), "method"), "value"), "html", null, true);
+            echo "
+                    ";
+            // line 12
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["Sessions"]) ? $context["Sessions"] : null), "remove", array(0 => "error"), "method"), "html", null, true);
+            echo "
+                </div>
+            </div>
+        </div>
+    ";
+        }
+        // line 17
+        echo "
+    <div class=\"row\">
         <div class=\"col-xs-12 col-sm-6 col-lg-4\">
             <h2 class=\"margin-bottom-30\">
                 Giriş Yap
@@ -102,10 +126,10 @@ class __TwigTemplate_7c24e44e7086e5e0a22109f7d35dbf52 extends Twig_Template
 ";
     }
 
-    // line 76
+    // line 90
     public function block_styles($context, array $blocks = array())
     {
-        // line 77
+        // line 91
         echo "<style>
     .margin-bottom-30 {
         margin-bottom: 30px;
@@ -126,6 +150,6 @@ class __TwigTemplate_7c24e44e7086e5e0a22109f7d35dbf52 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  107 => 77,  104 => 76,  30 => 4,  27 => 3,);
+        return array (  131 => 91,  128 => 90,  53 => 17,  45 => 12,  41 => 11,  33 => 5,  30 => 4,  27 => 3,);
     }
 }
