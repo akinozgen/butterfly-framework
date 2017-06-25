@@ -1,8 +1,9 @@
 <?php
 
+    session_start();
+
     //region Meta Config
     header('Content-type: text/html; charset=utf-8');
-
     // Last slash deadly recommended!!!
     define('URL', 'http://localhost/butterfly-framework/');
     //endregion

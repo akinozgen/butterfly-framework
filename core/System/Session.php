@@ -22,15 +22,28 @@ class Sessions
      * @param Session $session
      */
     public function add(Session $session) {
-        $_SESSION[$this->keyname][$session->getKey()] = $session;
+        $_SESSION[$this->keyname][$session->getKey()] = json_encode([
+            'key' => $session->getKey(),
+            'value' => $session->getValue()
+        ]);
     }
 
     /**
-     * @param string $key
+     * @param string|Session $key
      * @return Session|null
      */
     public function get($key) {
-        return isset($_SESSION[$this->keyname][$key]) ? new Session($_SESSION[$this->keyname][$key]->getKey(), $_SESSION[$this->keyname][$key]->getValue()) : null;
+        if (!isset($_SESSION[$this->keyname][$key])) {
+            return false;
+        }
+
+        if (is_string($key)) {
+            $session = json_decode($_SESSION[$this->keyname][$key]);
+            return new Session($session->key, $session->value);
+        } else {
+            $session = json_decode($_SESSION[$this->keyname][$key->getKey()]);
+            return new Session($session->key, $session->value);
+        }
     }
 
     /**
