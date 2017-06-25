@@ -117,7 +117,7 @@ Command tree:
     
 Examples: 
 Create route  /login or login is okay. But classpath **must** be like that
-> `$ butterfly create route /login \Butterfly\Bundles\Controllers\Welcome\Main`
+> `$ butterfly create route /login \\Butterfly\\Bundles\\Controllers\\Welcome\\Main`
 
 Create bundle  name **must** be **lowercase**
 > `$ butterfly create bundle home`
