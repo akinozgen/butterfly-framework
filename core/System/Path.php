@@ -46,4 +46,8 @@ class Path
         }
     }
 
+    public function redirect_route($route_key) {
+        header('Location: ' . $this->route($route_key));
+    }
+
 }
