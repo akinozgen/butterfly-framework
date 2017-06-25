@@ -4,5 +4,7 @@
     "/logout": "home/home/Logout",
     "/icerik/blog/ekle": "icerik/blog/Ekle",
     "/icerik/blog/bloglarim": "icerik/blog/Main",
-    "/upload": "home/home/Upload"
+    "/upload": "home/home/Upload",
+    "/icerik/blog/sil": "icerik/blog/Sil",
+    "/icerik/blog/duzenle": "icerik/blog/Duzenle"
 }
