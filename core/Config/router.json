@@ -1,5 +1,8 @@
 {
     "/": "home/home/Main",
     "/login": "home/home/Login",
-    "/logout": "home/home/Logout"
+    "/logout": "home/home/Logout",
+    "/icerik/blog/ekle": "icerik/blog/Ekle",
+    "/icerik/blog/bloglarim": "icerik/blog/Main",
+    "/upload": "home/home/Upload"
 }

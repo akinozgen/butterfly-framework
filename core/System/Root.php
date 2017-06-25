@@ -76,7 +76,7 @@ class Root
             // This place where magic appears and make world better.
             $this->method = new $class();
             $this->method->$method($this->parameters, $this->request);
-            // Magic is done. Go home...
+            // Magic is done. Go blog...
         } else {
             throw new Exception(
                 "004",

@@ -184,9 +184,9 @@ usage: butterfly [command] [sub-command] [value1] [value2 = ""]
      
     examples: 
         $ butterlfy create bundle deneme
-        $ butterfly create controller deneme:home
+        $ butterfly create controller deneme:blog
             -- deneme is bundle name
-            -- home is controller name
+            -- blog is controller name
         $ butterfly create route login Butterfly\Bundles\Home\Controllers\Welcome\Main
             -- login is route key name
             -- Home is bundle name
