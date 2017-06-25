@@ -11,9 +11,9 @@
             <ul class="nav navbar-nav">
                 <!-- Path.route('/login') is generates link to /login route -->
                 {% if Sessions.get('login') %}
-                    <li><a href="{{ Path.route('/logout') }}">Hoşgeldin, {{ Sessions.get('name').value }} Çıkış</a></li>
+                    {% include 'home/home/inc/user-menu.twig' %}
                 {% else %}
-                    <li><a href="{{ Path.route('/login') }}">Giriş Yap</a></li>
+                    {% include 'home/home/inc/guest-menu.twig' %}
                 {% endif %}
             </ul>
         </div>

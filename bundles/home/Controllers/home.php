@@ -10,6 +10,7 @@ use Butterfly\System\ActiveClass;
 use Butterfly\System\Parameters;
 use Butterfly\System\Request;
 use Butterfly\System\Session;
+use Butterfly\System\Uploader;
 use Butterfly\System\Validation;
 
 class Home extends ActiveClass
@@ -121,6 +122,36 @@ class Home extends ActiveClass
         }
         // Render view
         echo $this->getTwig()->render('home/home/sub/login.twig', $renderData);
+    }
+
+    public function upload(Parameters $parameters = null, Request $request = null) {
+        echo <<<HTML
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>Document</title>
+</head>
+<body>
+  <form method="post" enctype="multipart/form-data">
+  <input type="file" name="image" />
+  <button name="submit" value="1">Up!</button>
+</form>
+</body>
+</html>
+HTML;
+
+        if ($request->isPost()) {
+            $uploader = new Uploader('image');
+            $result = $uploader->setPath()
+                ->upload()
+                ->getResult();
+
+            if ($result) {
+                var_dump($uploader->getUrl());
+            }
+        }
+
     }
 
     /**
