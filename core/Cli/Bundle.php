@@ -85,7 +85,7 @@ class Home extends ActiveClass
 {
 
     public function main(Parameters \$parameters = null, Request \$request = null) {
-        echo \$this->getTwig()->render('$name/home/main.twig', [
+        echo \$this->getTwig()->render('$name/home/masterpage.twig', [
             'title' => 'Main',
             'message' => 'Greetings from $name:home:main...',
         ]);

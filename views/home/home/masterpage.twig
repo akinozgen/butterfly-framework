@@ -1,0 +1,16 @@
+<!doctype html>
+<html class="no-js" lang="">
+    {% include 'home/home/inc/head.twig' %}
+    {% block styles %}{% endblock %}
+<body>
+    <div class="container">
+        {% include 'home/home/inc/header.twig' %}
+        <div class="container">
+            {% block container %}{% endblock %}
+            {% include 'home/home/inc/footer.twig' %}
+        </div>
+    </div>
+    {% include 'home/home/inc/scripts.twig' %}
+    {% block scripts %}{% endblock %}
+</body>
+</html>

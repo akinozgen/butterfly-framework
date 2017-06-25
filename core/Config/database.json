@@ -1,10 +1,10 @@
 {
-    "name": "butterfly_demo",
+    "name": "butterfly",
     "charset": "utf8",
     "driver": "mysql",
     "host": {
         "name": "localhost",
         "user": "root",
-        "password": ""
+        "password": "toor"
     }
 }

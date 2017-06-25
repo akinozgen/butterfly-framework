@@ -1,6 +1,6 @@
 <?php
 
-/* home/welcome/main.twig */
+/* home/welcome/masterpage.twig */
 class __TwigTemplate_2edf379fc6351f326e7adc8a76811449 extends Twig_Template
 {
     public function __construct(Twig_Environment $env)
@@ -128,7 +128,7 @@ class __TwigTemplate_2edf379fc6351f326e7adc8a76811449 extends Twig_Template
 
     public function getTemplateName()
     {
-        return "home/welcome/main.twig";
+        return "home/welcome/masterpage.twig";
     }
 
     public function isTraitable()

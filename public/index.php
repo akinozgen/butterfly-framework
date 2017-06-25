@@ -4,7 +4,7 @@
     header('Content-type: text/html; charset=utf-8');
 
     // Last slash deadly recommended!!!
-    define('URL', 'http://butterfly.app/');
+    define('URL', 'http://localhost/butterfly-framework/');
     //endregion
     //region Requires
     require_once '../vendor/autoload.php';

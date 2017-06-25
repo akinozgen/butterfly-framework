@@ -26,10 +26,13 @@ class ActiveClass
     {
         global $config;
         $this->twig = new \Twig_Environment(new \Twig_Loader_Filesystem(__DIR__.'/../../views'), [
-                'cache' => __DIR__.'/../../cache/twig',
-                'auto_reload' => true
-            ]);
-        $this->twig->addGlobal('application_name', $config['defaults']->meta->application_name);
+            'cache' => __DIR__.'/../../cache/twig',
+            'auto_reload' => true
+        ]);
+
+        foreach ($config['defaults']->meta as $key => $value) {
+            $this->twig->addGlobal($key, $config['defaults']->meta->$key);
+        }
 
         $this->database = new Database($config['database']);
         $this->loader = new Loader();
