@@ -22,6 +22,7 @@
     require_once '../core/System/Loader.php';
     require_once '../core/System/Session.php';
     require_once '../core/System/Validation.php';
+    require_once '../core/System/Uploader.php';
     //endregion
     //region Usings
     use \Butterfly\System\UrlParser as Url;
