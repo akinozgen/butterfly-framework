@@ -14,6 +14,14 @@ use Butterfly\System\Session;
 class Home extends ActiveClass
 {
 
+    function __construct()
+    {
+        parent::__construct();
+        $this->getLoader()->loadModel('\\Butterfly\\Bundles\\Home\\Models\\RegisterPost');
+        $this->getLoader()->loadModel('\\Butterfly\\Bundles\\Home\\Models\\LoginPost');
+        $this->getLoader()->loadModel('\\Butterfly\\Bundles\\Home\\Models\\User');
+    }
+
     public function main(Parameters $parameters = null, Request $request = null) {
         $this->getLoader()->loadModel('\\Butterfly\\Bundles\\Home\\Models\\Specifications');
 
@@ -29,9 +37,10 @@ class Home extends ActiveClass
     }
 
     public function login(Parameters $parameters = null, Request $request = null) {
-        $this->getLoader()->loadModel('\\Butterfly\\Bundles\\Home\\Models\\RegisterPost');
-        $this->getLoader()->loadModel('\\Butterfly\\Bundles\\Home\\Models\\LoginPost');
-        $this->getLoader()->loadModel('\\Butterfly\\Bundles\\Home\\Models\\User');
+
+        if ($this->getSessions()->get('login')) {
+            $this->getPath()->redirect_route('/');
+        }
 
         if ($request->isPost() && $request->getPostValue('submit') == 'login') {
             $loginPostFactory = new LoginPostFactory();
@@ -42,6 +51,7 @@ class Home extends ActiveClass
 
             if ($login) {
                 $userFactory->login($login);
+                $this->getPath()->redirect_route('/');
             } else {
                 $this->getSessions()->add(new Session('error', 'Kullanıcı adı veya şifre hatalı.'));
             }
@@ -56,6 +66,7 @@ class Home extends ActiveClass
             if ($result) {
                 $user = $userFactory->getByEmail($user->getEmail());
                 $userFactory->login($user);
+                $this->getPath()->redirect_route('/');
             } else {
                 $this->getSessions()->add(new Session('error', 'Kayıt hatası. Hata: ' . $result->errorInfo()));
             }
