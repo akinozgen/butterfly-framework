@@ -71,7 +71,7 @@ class Bundle
         $now_year   = date('Y');
         $name       = strtolower($this->name);
         $write_file = file_put_contents(
-            __DIR__ . '/../../bundles/'.strtolower($this->name).'/Controllers/blog.php',
+            __DIR__ . '/../../bundles/'.strtolower($this->name).'/Controllers/home.php',
             <<<PHP
 <?php
 
@@ -85,9 +85,9 @@ class Home extends ActiveClass
 {
 
     public function main(Parameters \$parameters = null, Request \$request = null) {
-        echo \$this->getTwig()->render('$name/blog/masterpage.twig', [
+        echo \$this->getTwig()->render('$name/home/masterpage.twig', [
             'title' => 'Main',
-            'message' => 'Greetings from $name:blog:main...',
+            'message' => 'Greetings from $name:home:main...',
         ]);
     }
 
@@ -95,7 +95,7 @@ class Home extends ActiveClass
 PHP
         );
         $write_file2 = file_put_contents(
-            __DIR__ . '/../../views/'.strtolower($this->name).'/blog/main.twig',
+            __DIR__ . '/../../views/'.strtolower($this->name).'/home/main.twig',
             <<<HTML
 <!doctype html>
 <html class="no-js" lang="">
@@ -201,7 +201,7 @@ HTML
         } else {
             if ( strlen($this->name) > 1 ){
                 exec("rm -R " . __DIR__ . '/../../bundles/' . strtolower($this->name));
-                //exec("rm -R " . __DIR__ . '/../../views/' . strtolower($this->name));
+                exec("rm -R " . __DIR__ . '/../../views/' . strtolower($this->name));
             }
             throw new Exception("013");
         }
