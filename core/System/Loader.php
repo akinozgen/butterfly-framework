@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Akın Özgen
@@ -8,47 +9,36 @@
 
 namespace Butterfly\System;
 
+class Loader {
 
-class Loader
-{
+    function __construct() {
+        $dirname = opendir(realpath(__DIR__ . '/../../bundles/'));
+        $bundles = [];
 
-    function __construct()
-    {
-    }
-
-    /**
-     * @param string $classpath \Butterfly\Bundles\[BundleName]\Models\[ModelName]
-     * @throws Exception
-     */
-    public function loadModel($classpath) {
-        // Ex.Classpath: \Butterfly\Bundles\[BundleName]\Models\[ModelName]
-        $split = explode("\\", $classpath);
-        $bundleName = strtolower($split[3]);
-        $modelName = strtolower($split[5]);
-
-        $filePath = realpath(__DIR__ . '/../../bundles/' . $bundleName . '/Models/' . $modelName . '.php');
-        if ($filePath) {
-            require_once $filePath;
-        } else {
-            throw new Exception('020', [ 'model' => $classpath ]);
+        while ($item = readdir($dirname)) {
+            if (!in_array($item, ['.', '..']))
+                $bundles[] = $item;
         }
-    }
 
-    /**
-     * @param string $classpath Ex.\Butterfly\Bundles\[BundleName]\Helpers\[HelperName]
-     */
-    public function loadHelper($classpath) {
-        // Ex.Classpath: \Butterfly\Bundles\[BundleName]\Helpers\[HelperName]
-        $split = explode("\\", $classpath);
-        $bundleName = @strtolower($split[3]);
-        $helperName = @strtolower($split[5]);
+        foreach ($bundles as $bundle) {
+            $dirModels = opendir(realpath(__DIR__ . '/../../bundles/' . $bundle . '/Models/'));
+            $dirSchemas = opendir(realpath(__DIR__ . '/../../bundles/' . $bundle . '/Schemas/'));
+            $dirHelpers = opendir(realpath(__DIR__ . '/../../bundles/' . $bundle . '/Helpers/'));
 
-        $filePath = realpath(__DIR__ . '/../../bundles/' . $bundleName . '/Helpers/' . $helperName . '.php');
+            while ($item = readdir($dirModels)) {
+                if (!in_array($item, ['.', '..']))
+                    require_once(__DIR__ . '/../../bundles/' . $bundle . '/Models/' . $item);
+            }
 
-        if ($filePath) {
-            require_once $filePath;
-        } else {
-            throw new Exception('021', [ 'helper' => $classpath ]);
+            while ($item = readdir($dirSchemas)) {
+                if (!in_array($item, ['.', '..']))
+                    require_once(__DIR__ . '/../../bundles/' . $bundle . '/Schemas/' . $item);
+            }
+
+            while ($item = readdir($dirHelpers)) {
+                if (!in_array($item, ['.', '..']))
+                    require_once(__DIR__ . '/../../bundles/' . $bundle . '/Helpers/' . $item);
+            }
         }
     }
 

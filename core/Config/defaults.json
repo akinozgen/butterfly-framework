@@ -1,6 +1,6 @@
 {
     "meta": {
-        "application_name": "Butterfly Framework"
+        "application_name": "NetDuy Stok Takip"
     },
     "route": {
         "name": "/",
@@ -34,5 +34,6 @@
         "show_error_codes": true,
         "show_error_texts": true
     },
-    "session_key": "butterfly_sessions"
+    "session_key": "butterfly_sessions",
+    "encryption_key": "!YUHgRKyun|e\"OsY@wpVaT?81Sy*:"
 }

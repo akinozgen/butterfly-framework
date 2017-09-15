@@ -8,7 +8,6 @@
 
 namespace Butterfly\System;
 
-
 class Sessions
 {
     private $keyname;
@@ -29,12 +28,12 @@ class Sessions
     }
 
     /**
-     * @param string|Session $key
-     * @return Session|null
+     * @param string $key
+     * @return bool|Session
      */
     public function get($key) {
         if (!isset($_SESSION[$this->keyname][$key])) {
-            return false;
+            return new Session($key, false);
         }
 
         if (is_string($key)) {

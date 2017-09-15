@@ -153,7 +153,7 @@ class Database extends \PDO
                 }
                 else
                 {
-                    $flds .= "{$key} = '{$value}', ";
+                    $flds .= "`{$key}` = '{$value}', ";
                 }
             }
             // Delete last Comma

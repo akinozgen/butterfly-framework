@@ -5,7 +5,7 @@
     //region Meta Config
     header('Content-type: text/html; charset=utf-8');
     // Last slash deadly recommended!!!
-    define('URL', 'http://localhost/butterfly-framework/');
+    define('URL', 'http://netduy.app/');
     //endregion
     //region Requires
     require_once '../vendor/autoload.php';
@@ -23,6 +23,9 @@
     require_once '../core/System/Session.php';
     require_once '../core/System/Validation.php';
     require_once '../core/System/Uploader.php';
+    require_once '../core/System/Encrypter.php';
+    require_once '../core/System/ModelInterface.php';
+    require_once '../core/System/Converter.php';
     //endregion
     //region Usings
     use \Butterfly\System\UrlParser as Url;

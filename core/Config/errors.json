@@ -20,5 +20,7 @@
     "019": "Route '%route' doens't remove.",
     "020": "Model '%model' doesn't exists",
     "021": "Helper '%helper' doesn't exists",
-    "022": "Asset '%asset' doesn't exists"
+    "022": "Asset '%asset' doesn't exists",
+    "023": "Specified schema '%schema' not found.",
+    "024": "Schema '%schema' doesn't exists"
 }

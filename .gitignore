@@ -1,3 +1,5 @@
 vendor
 cache/twig/*
 .idea/
+public/uploads
+public/admin/vendors
