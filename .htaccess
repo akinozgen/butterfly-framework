@@ -5,5 +5,5 @@ DirectoryIndex './public/index.php'
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-RewriteRule ^(.*)$ public/index.php/$1 [L,QSA]
+RewriteRule ^(.*)$ public/index.php?/$1 [L,QSA]
 RewriteRule ^index* index.php [NC]
