@@ -38,7 +38,7 @@ class Sessions
 
         if (is_string($key)) {
             $session = json_decode($_SESSION[$this->keyname][$key]);
-            return new Session($session->key, $session->value);
+            return @new Session($session->key, $session->value);
         } else {
             $session = json_decode($_SESSION[$this->keyname][$key->getKey()]);
             return new Session($session->key, $session->value);
@@ -78,9 +78,8 @@ class Session {
     /**
      * @return mixed
      */
-    public function getValue()
-    {
-        return $this->value;
+    public function getValue($decoded = false) {
+        return !$decoded ? $this->value : json_decode($this->value);
     }
 
     /**

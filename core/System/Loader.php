@@ -25,17 +25,17 @@ class Loader {
             $dirSchemas = opendir(realpath(__DIR__ . '/../../bundles/' . $bundle . '/Schemas/'));
             $dirHelpers = opendir(realpath(__DIR__ . '/../../bundles/' . $bundle . '/Helpers/'));
 
-            while ($item = readdir($dirModels)) {
+            while ($item = @readdir($dirModels)) {
                 if (!in_array($item, ['.', '..']))
                     require_once(__DIR__ . '/../../bundles/' . $bundle . '/Models/' . $item);
             }
 
-            while ($item = readdir($dirSchemas)) {
+            while ($item = @readdir($dirSchemas)) {
                 if (!in_array($item, ['.', '..']))
                     require_once(__DIR__ . '/../../bundles/' . $bundle . '/Schemas/' . $item);
             }
 
-            while ($item = readdir($dirHelpers)) {
+            while ($item = @readdir($dirHelpers)) {
                 if (!in_array($item, ['.', '..']))
                     require_once(__DIR__ . '/../../bundles/' . $bundle . '/Helpers/' . $item);
             }

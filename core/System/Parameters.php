@@ -67,7 +67,7 @@ class Parameters
      * @return mixed
      */
     public function getParameter($key) {
-        return $this->parameters[$key];
+        return @$this->parameters[$key];
     }
 
 }
