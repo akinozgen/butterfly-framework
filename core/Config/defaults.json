@@ -1,6 +1,6 @@
 {
     "meta": {
-        "application_name": "NetDuy Stok Takip"
+        "application_name": "Butterfly Framework"
     },
     "route": {
         "name": "/",

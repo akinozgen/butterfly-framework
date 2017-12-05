@@ -1,10 +1,10 @@
 {
-    "name": "netduy",
+    "name": "framework",
     "charset": "utf8",
     "driver": "mysql",
     "host": {
         "name": "localhost",
         "user": "root",
-        "password": "toor"
+        "password": ""
     }
 }
