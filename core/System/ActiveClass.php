@@ -58,9 +58,12 @@ class ActiveClass {
         }
 
         $this->database = new Database($config['database']);
+        $this->database->query("SET CHARACTER SET 'utf8'");
+        $this->database->query("SET NAMES 'utf8'");
         $this->loader = new Loader();
         $this->path = new Path();
         $this->sessions = new Sessions($config['defaults']->session_key);
+        $this->twig->addGlobal('URL', URL);
         $this->twig->addGlobal('Path', $this->path);
         $this->twig->addGlobal('Sessions', $this->sessions);
         $this->twig->addGlobal('defaults', $config['defaults']);
